@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { BookOpen, Brain, Clock, Users, Calculator, Language, Flask, Code, Music, Palette, Globe, BookText } from "lucide-react";
+import { BookOpen, Brain, Clock, Users, Calculator, Languages, Microscope, Code, Music, Palette, Globe, BookText } from "lucide-react";
 
 const Index = () => {
   return (
@@ -78,16 +78,18 @@ const Index = () => {
               title="Mathematics"
               description="From algebra to calculus, master mathematical concepts"
             />
+
             <SubjectCard
-              icon={<Language className="w-8 h-8 text-purple-600" />}
+              icon={<Languages className="w-8 h-8 text-purple-600" />}
               title="Languages"
               description="Learn English, Spanish, French, and more"
             />
             <SubjectCard
-              icon={<Flask className="w-8 h-8 text-purple-600" />}
+              icon={<Microscope className="w-8 h-8 text-purple-600" />}
               title="Sciences"
               description="Physics, Chemistry, and Biology made simple"
             />
+
             <SubjectCard
               icon={<Code className="w-8 h-8 text-purple-600" />}
               title="Computer Science"
@@ -233,3 +235,4 @@ const TestimonialCard = ({
 };
 
 export default Index;
+
