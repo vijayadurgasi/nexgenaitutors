@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { BookOpen, Brain, Clock, Users } from "lucide-react";
+import { BookOpen, Brain, Clock, Users, Calculator, Language, Flask, Code, Music, Palette, Globe, BookText } from "lucide-react";
 
 const Index = () => {
   return (
@@ -61,6 +61,57 @@ const Index = () => {
               title="Comprehensive Subjects"
               description="Wide range of subjects and topics covered"
               image="https://images.unsplash.com/photo-1460925895917-afdab827c52f"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Subjects Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Explore Our Subjects
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <SubjectCard
+              icon={<Calculator className="w-8 h-8 text-purple-600" />}
+              title="Mathematics"
+              description="From algebra to calculus, master mathematical concepts"
+            />
+            <SubjectCard
+              icon={<Language className="w-8 h-8 text-purple-600" />}
+              title="Languages"
+              description="Learn English, Spanish, French, and more"
+            />
+            <SubjectCard
+              icon={<Flask className="w-8 h-8 text-purple-600" />}
+              title="Sciences"
+              description="Physics, Chemistry, and Biology made simple"
+            />
+            <SubjectCard
+              icon={<Code className="w-8 h-8 text-purple-600" />}
+              title="Computer Science"
+              description="Programming, web development, and more"
+            />
+            <SubjectCard
+              icon={<Music className="w-8 h-8 text-purple-600" />}
+              title="Music"
+              description="Theory, composition, and instrument lessons"
+            />
+            <SubjectCard
+              icon={<Palette className="w-8 h-8 text-purple-600" />}
+              title="Arts"
+              description="Drawing, painting, and digital art"
+            />
+            <SubjectCard
+              icon={<Globe className="w-8 h-8 text-purple-600" />}
+              title="Social Studies"
+              description="History, Geography, and Current Events"
+            />
+            <SubjectCard
+              icon={<BookText className="w-8 h-8 text-purple-600" />}
+              title="Literature"
+              description="Reading comprehension and writing skills"
             />
           </div>
         </div>
@@ -129,18 +180,31 @@ const FeatureCard = ({
   image: string;
 }) => {
   return (
-    <Card className="text-center p-6 hover:shadow-lg transition-shadow overflow-hidden">
+    <Card className="text-center p-6 hover:shadow-lg transition-shadow cursor-pointer">
       <CardContent className="pt-6">
-        <div className="mb-4">
-          <img
-            src={image}
-            alt={title}
-            className="w-full h-40 object-cover rounded-lg mb-4"
-          />
-        </div>
         <div className="mb-4 flex justify-center">{icon}</div>
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-gray-600">{description}</p>
+        <h3 className="text-lg font-semibold mb-2">{title}</h3>
+        <p className="text-sm text-gray-600">{description}</p>
+      </CardContent>
+    </Card>
+  );
+};
+
+const SubjectCard = ({
+  icon,
+  title,
+  description,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}) => {
+  return (
+    <Card className="text-center p-6 hover:shadow-lg transition-shadow cursor-pointer">
+      <CardContent className="pt-6">
+        <div className="mb-4 flex justify-center">{icon}</div>
+        <h3 className="text-lg font-semibold mb-2">{title}</h3>
+        <p className="text-sm text-gray-600">{description}</p>
       </CardContent>
     </Card>
   );
