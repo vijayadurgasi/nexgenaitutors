@@ -18,6 +18,12 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/about-us" element={<Index />} /> {/* Placeholder for now */}
+          <Route path="/courses" element={<Index />} /> {/* Placeholder for now */}
+          <Route path="/teachers" element={<Index />} /> {/* Placeholder for now */}
+          <Route path="/contact-us" element={<Index />} /> {/* Placeholder for now */}
+          <Route path="/how-it-works" element={<Index />} /> {/* Placeholder for now */}
+          <Route path="/subjects/:subject" element={<Index />} /> {/* Placeholder for now */}
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
