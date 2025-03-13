@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Microscope, Atom, Flask, Dna, Brain, Rocket, Leaf, Globe } from "lucide-react";
+import { Microscope, Atom, Beaker, Dna, Brain, Rocket, Leaf, Globe } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -138,7 +138,7 @@ const scienceSubjects = [
     id: 2,
     title: "Chemistry",
     description: "Explore the molecular world through engaging visualizations of chemical structures, reactions, and laboratory techniques.",
-    icon: Flask
+    icon: Beaker
   },
   {
     id: 3,
