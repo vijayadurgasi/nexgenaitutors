@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import ChatbotButton from "@/components/Chatbot/ChatbotButton";
 
 const Blog = () => {
   return (
@@ -39,6 +40,7 @@ const Blog = () => {
         </section>
       </main>
       <Footer />
+      <ChatbotButton />
     </div>
   );
 };
@@ -82,52 +84,52 @@ const BlogCard = ({ title, category, date, excerpt, image, slug }: BlogPost) => 
 
 const blogPosts: BlogPost[] = [
   {
-    title: "How AI is Transforming Personalized Learning",
-    category: "Technology",
-    date: "May 15, 2023",
-    excerpt: "Discover how artificial intelligence is revolutionizing the way students learn and how personalized learning paths can improve educational outcomes.",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1964&q=80",
-    slug: "ai-transforming-learning"
-  },
-  {
-    title: "5 Effective Study Techniques Based on Cognitive Science",
-    category: "Learning Tips",
-    date: "April 28, 2023",
-    excerpt: "Learn evidence-based study methods that leverage how the brain works to help students retain information longer and understand concepts better.",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1964&q=80",
-    slug: "effective-study-techniques"
-  },
-  {
-    title: "Building Critical Thinking Skills in Young Learners",
-    category: "Skill Development",
-    date: "April 10, 2023",
-    excerpt: "Explore practical activities and approaches to foster critical thinking abilities in children from an early age.",
+    title: "7 Ways to Develop Critical Thinking Skills in Children",
+    category: "Thinking Skills",
+    date: "June 15, 2023",
+    excerpt: "Discover effective strategies to help your child develop essential critical thinking abilities that will benefit them throughout their academic journey and beyond.",
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1964&q=80",
-    slug: "building-critical-thinking"
+    slug: "develop-critical-thinking-skills"
   },
   {
-    title: "The Role of Parents in Supporting Online Learning",
-    category: "Parenting",
-    date: "March 22, 2023",
-    excerpt: "Practical tips for parents to create an effective learning environment at home and support their children's educational journey.",
-    image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1964&q=80",
-    slug: "parents-supporting-online-learning"
-  },
-  {
-    title: "Why Learning to Code is Essential in Today's Education",
-    category: "Coding",
-    date: "March 5, 2023",
-    excerpt: "Understand the importance of introducing coding concepts early and how computational thinking benefits students across all subjects.",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1964&q=80",
-    slug: "importance-of-coding"
-  },
-  {
-    title: "Addressing Math Anxiety: Strategies That Work",
+    title: "How Early Math Skills Impact Future Academic Success",
     category: "Mathematics",
-    date: "February 18, 2023",
-    excerpt: "Explore effective approaches to help students overcome math anxiety and build confidence in their mathematical abilities.",
+    date: "May 28, 2023",
+    excerpt: "Research shows that strong early mathematics skills are a powerful predictor of later academic achievement. Learn how to build a solid foundation for your child.",
     image: "https://images.unsplash.com/photo-1509228627152-72ae9ae6848d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1964&q=80",
-    slug: "addressing-math-anxiety"
+    slug: "early-math-skills-impact"
+  },
+  {
+    title: "Why Learning to Code is Essential for Today's Children",
+    category: "Coding",
+    date: "May 10, 2023",
+    excerpt: "Coding teaches more than just technical skills. Discover how programming helps children develop problem-solving abilities, creativity, and logical thinking.",
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1964&q=80",
+    slug: "learning-to-code-benefits"
+  },
+  {
+    title: "The Power of Reading: How to Nurture a Lifelong Love of Books",
+    category: "English",
+    date: "April 22, 2023",
+    excerpt: "Encouraging reading at an early age has profound effects on literacy, vocabulary, and academic performance. Learn practical tips to foster a love of reading in your child.",
+    image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1964&q=80",
+    slug: "nurture-love-of-reading"
+  },
+  {
+    title: "Balancing Screen Time and Learning in the Digital Age",
+    category: "Parenting",
+    date: "April 5, 2023",
+    excerpt: "Finding the right balance between technology use and other activities is crucial for healthy development. Explore practical strategies for managing screen time effectively.",
+    image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1964&q=80",
+    slug: "balancing-screen-time"
+  },
+  {
+    title: "Supporting Your Child's Learning Journey at Home",
+    category: "Education",
+    date: "March 18, 2023",
+    excerpt: "Parents are their children's first teachers. Learn how to create a supportive learning environment at home that complements formal education and nurtures curiosity.",
+    image: "https://images.unsplash.com/photo-1588072432904-843af37f03ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1964&q=80",
+    slug: "supporting-learning-at-home"
   }
 ];
 

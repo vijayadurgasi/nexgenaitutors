@@ -28,7 +28,7 @@ const ChatbotButton = () => {
       </div>
 
       {isOpen && (
-        <div className="fixed bottom-16 right-4 z-50 w-[300px] bg-white rounded-lg shadow-xl overflow-hidden transition-all duration-300 ease-in-out">
+        <div className="fixed bottom-16 right-4 z-50 w-[280px] max-h-[450px] bg-white rounded-lg shadow-xl overflow-hidden transition-all duration-300 ease-in-out">
           <ChatbotForm onClose={() => setIsOpen(false)} />
         </div>
       )}
