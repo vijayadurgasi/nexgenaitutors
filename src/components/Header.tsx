@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -11,7 +10,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import React from "react";
-import { Menu, X } from "lucide-react";
+import { GraduationCap, Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
   Drawer,
@@ -28,7 +27,8 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full backdrop-blur-lg bg-white/75 dark:bg-gray-900/75 border-b border-gray-200 dark:border-gray-800">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center space-x-2">
-          <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+          <GraduationCap className="h-8 w-8 text-navy-600" />
+          <span className="text-2xl font-bold bg-gradient-to-r from-navy-600 to-navy-800 bg-clip-text text-transparent">
             NextGen AI Tutors
           </span>
         </Link>
@@ -69,16 +69,6 @@ const Header = () => {
                     className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
                   >
                     About Us
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link
-                    to="/courses"
-                    className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
-                  >
-                    Courses
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
@@ -139,7 +129,7 @@ const Header = () => {
                 Log in
               </Button>
               <Button 
-                className="bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700"
+                className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900"
               >
                 Get Started
               </Button>
@@ -162,55 +152,49 @@ const Header = () => {
                 <div className="px-4 py-2 flex flex-col space-y-4">
                   <Link 
                     to="/" 
-                    className="text-lg font-medium hover:text-purple-600 transition-colors"
+                    className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
                     Home
                   </Link>
                   <Link 
                     to="/about-us" 
-                    className="text-lg font-medium hover:text-purple-600 transition-colors"
+                    className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
                     About Us
                   </Link>
                   <Link 
                     to="/subjects/mathematics" 
-                    className="text-lg font-medium hover:text-purple-600 transition-colors"
+                    className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
                     Subjects
                   </Link>
                   <Link 
-                    to="/courses" 
-                    className="text-lg font-medium hover:text-purple-600 transition-colors"
-                  >
-                    Courses
-                  </Link>
-                  <Link 
                     to="/teachers" 
-                    className="text-lg font-medium hover:text-purple-600 transition-colors"
+                    className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
                     Teachers
                   </Link>
                   <Link 
                     to="/how-it-works" 
-                    className="text-lg font-medium hover:text-purple-600 transition-colors"
+                    className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
                     How It Works
                   </Link>
                   <Link 
                     to="/pricing" 
-                    className="text-lg font-medium hover:text-purple-600 transition-colors"
+                    className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
                     Pricing
                   </Link>
                   <Link 
                     to="/contact-us" 
-                    className="text-lg font-medium hover:text-purple-600 transition-colors"
+                    className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
                     Contact Us
                   </Link>
                   <div className="pt-4 flex flex-col space-y-2">
                     <Button variant="outline">Log in</Button>
-                    <Button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700">
+                    <Button className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900">
                       Get Started
                     </Button>
                   </div>

@@ -17,25 +17,25 @@ const FeaturesSection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <FeatureCard
-            icon={<Brain className="w-10 h-10 text-purple-600" />}
+            icon={<Brain className="w-10 h-10 text-navy-600" />}
             title="AI-Powered Learning"
             description="Adaptive learning paths tailored to your unique needs and learning style"
             image="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
           />
           <FeatureCard
-            icon={<Users className="w-10 h-10 text-purple-600" />}
+            icon={<Users className="w-10 h-10 text-navy-600" />}
             title="Expert Human Tutors"
             description="Access to qualified tutors with proven track records when you need extra help"
             image="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
           />
           <FeatureCard
-            icon={<Clock className="w-10 h-10 text-purple-600" />}
+            icon={<Clock className="w-10 h-10 text-navy-600" />}
             title="24/7 Availability"
             description="Learn at your own pace, anytime, anywhere with instant feedback"
             image="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
           />
           <FeatureCard
-            icon={<BookOpen className="w-10 h-10 text-purple-600" />}
+            icon={<BookOpen className="w-10 h-10 text-navy-600" />}
             title="Comprehensive Curriculum"
             description="Wide range of subjects and topics covered with constantly updated content"
             image="https://images.unsplash.com/photo-1460925895917-afdab827c52f"
@@ -58,7 +58,7 @@ const FeatureCard = ({
   image: string;
 }) => {
   return (
-    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-xl border-t-4 border-t-purple-600">
+    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-xl border-t-4 border-t-navy-600">
       <div className="h-40 overflow-hidden">
         <img 
           src={image} 

@@ -17,22 +17,22 @@ const StatisticsSection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <StatCard
-            icon={<Users className="w-10 h-10 text-purple-600" />}
+            icon={<Users className="w-10 h-10 text-navy-600" />}
             value="50,000+"
             label="Active Students"
           />
           <StatCard
-            icon={<BookOpen className="w-10 h-10 text-purple-600" />}
+            icon={<BookOpen className="w-10 h-10 text-navy-600" />}
             value="100+"
             label="Subjects Covered"
           />
           <StatCard
-            icon={<Award className="w-10 h-10 text-purple-600" />}
+            icon={<Award className="w-10 h-10 text-navy-600" />}
             value="95%"
             label="Success Rate"
           />
           <StatCard
-            icon={<Clock className="w-10 h-10 text-purple-600" />}
+            icon={<Clock className="w-10 h-10 text-navy-600" />}
             value="1M+"
             label="Learning Hours"
           />
@@ -52,7 +52,7 @@ const StatCard = ({
   label: string;
 }) => {
   return (
-    <Card className="text-center p-6 hover:shadow-lg transition-all border-t-4 border-t-purple-600">
+    <Card className="text-center p-6 hover:shadow-lg transition-all border-t-4 border-t-navy-600">
       <CardContent className="pt-6">
         <div className="mb-4 flex justify-center">{icon}</div>
         <h3 className="text-3xl md:text-4xl font-bold mb-2">{value}</h3>
