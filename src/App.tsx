@@ -6,6 +6,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Pricing from "./pages/Pricing";
+import AboutUs from "./pages/AboutUs";
+import ContactUs from "./pages/ContactUs";
+import Teachers from "./pages/Teachers";
+import SubjectsPage from "./pages/SubjectsPage";
+import SubjectDetails from "./pages/SubjectDetails";
 
 const queryClient = new QueryClient();
 
@@ -18,11 +23,11 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/pricing" element={<Pricing />} />
-          <Route path="/about-us" element={<Index />} /> {/* Placeholder for now */}
-          <Route path="/teachers" element={<Index />} /> {/* Placeholder for now */}
-          <Route path="/contact-us" element={<Index />} /> {/* Placeholder for now */}
-          <Route path="/how-it-works" element={<Index />} /> {/* Placeholder for now */}
-          <Route path="/subjects/:subject" element={<Index />} /> {/* Placeholder for now */}
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/teachers" element={<Teachers />} />
+          <Route path="/subjects" element={<SubjectsPage />} />
+          <Route path="/subjects/:subject" element={<SubjectDetails />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

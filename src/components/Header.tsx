@@ -65,6 +65,16 @@ const Header = () => {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link
+                    to="/teachers"
+                    className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
+                  >
+                    Teachers
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link
                     to="/about-us"
                     className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
                   >
@@ -75,28 +85,12 @@ const Header = () => {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link
-                    to="/teachers"
+                    to="/contact-us"
                     className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
                   >
-                    Teachers
+                    Contact Us
                   </Link>
                 </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>How It Works</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px]">
-                    <ListItem title="AI-Powered Learning" href="/how-it-works">
-                      Discover how our AI adapts to your learning style and pace
-                    </ListItem>
-                    <ListItem title="Personalized Experience" href="/how-it-works">
-                      We create custom learning paths based on your needs
-                    </ListItem>
-                    <ListItem title="Progress Tracking" href="/how-it-works">
-                      Monitor your growth with detailed analytics and reports
-                    </ListItem>
-                  </ul>
-                </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
@@ -105,16 +99,6 @@ const Header = () => {
                     className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
                   >
                     Pricing
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link
-                    to="/contact-us"
-                    className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
-                  >
-                    Contact Us
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
@@ -157,12 +141,6 @@ const Header = () => {
                     Home
                   </Link>
                   <Link 
-                    to="/about-us" 
-                    className="text-lg font-medium hover:text-navy-600 transition-colors"
-                  >
-                    About Us
-                  </Link>
-                  <Link 
                     to="/subjects/mathematics" 
                     className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
@@ -175,22 +153,22 @@ const Header = () => {
                     Teachers
                   </Link>
                   <Link 
-                    to="/how-it-works" 
+                    to="/about-us" 
                     className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
-                    How It Works
-                  </Link>
-                  <Link 
-                    to="/pricing" 
-                    className="text-lg font-medium hover:text-navy-600 transition-colors"
-                  >
-                    Pricing
+                    About Us
                   </Link>
                   <Link 
                     to="/contact-us" 
                     className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
                     Contact Us
+                  </Link>
+                  <Link 
+                    to="/pricing" 
+                    className="text-lg font-medium hover:text-navy-600 transition-colors"
+                  >
+                    Pricing
                   </Link>
                   <div className="pt-4 flex flex-col space-y-2">
                     <Button variant="outline">Log in</Button>
