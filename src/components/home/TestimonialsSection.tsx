@@ -17,20 +17,18 @@ const TestimonialsSection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <TestimonialCard
-            name="Sarah Johnson"
-            relation="Parent of Alex, 12"
+            name="Priya Sharma"
+            relation="Parent of Arjun, 12"
             subject="Mathematics"
-            content="The personalized approach to math has helped my son overcome his fear of numbers. The tutors are patient and make complex concepts easy to understand. Alex's grades have improved significantly!"
+            content="The personalized approach to math has helped my son overcome his fear of numbers. The tutors are patient and make complex concepts easy to understand. Arjun's grades have improved significantly!"
             stars={5}
-            image="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
           />
           <TestimonialCard
-            name="David Chen"
-            relation="Parent of Emma, 9"
+            name="Raj Patel"
+            relation="Parent of Meera, 9"
             subject="Thinking Skills"
-            content="I've noticed remarkable improvements in my daughter's critical thinking abilities. The tutors focus not just on academic knowledge but on developing problem-solving skills. Emma now approaches challenges with confidence."
+            content="I've noticed remarkable improvements in my daughter's critical thinking abilities. The tutors focus not just on academic knowledge but on developing problem-solving skills. Meera now approaches challenges with confidence."
             stars={5}
-            image="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
           />
           <TestimonialCard
             name="Michelle Garcia"
@@ -38,23 +36,20 @@ const TestimonialsSection = () => {
             subject="English"
             content="The English tutoring program has transformed my son's writing and comprehension skills. The personalized feedback system helps him understand his strengths and weaknesses. His confidence in class discussions has soared!"
             stars={5}
-            image="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
           />
           <TestimonialCard
-            name="Robert Taylor"
-            relation="Parent of Sophia, 10"
+            name="Ananya Gupta"
+            relation="Parent of Vikram, 10"
             subject="Coding"
-            content="From knowing nothing about programming to building her own games in just months! The step-by-step approach made learning to code fun and engaging for my daughter. The tutors are knowledgeable and patient."
+            content="From knowing nothing about programming to building his own games in just months! The step-by-step approach made learning to code fun and engaging for my son. The tutors are knowledgeable and patient."
             stars={5}
-            image="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
           />
           <TestimonialCard
-            name="Jennifer Wilson"
-            relation="Parent of Ryan, 8"
+            name="Deepak Malhotra"
+            relation="Parent of Riya, 8"
             subject="Science"
-            content="The science tutoring has sparked a genuine curiosity in my son. The hands-on experiments and interactive sessions make learning enjoyable. Ryan now looks forward to his science classes at school!"
+            content="The science tutoring has sparked a genuine curiosity in my daughter. The hands-on experiments and interactive sessions make learning enjoyable. Riya now looks forward to her science classes at school!"
             stars={5}
-            image="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
           />
           <TestimonialCard
             name="Michael Brown"
@@ -62,7 +57,6 @@ const TestimonialsSection = () => {
             subject="Languages"
             content="My daughter has made incredible progress with her language skills. The conversational approach and cultural context provided have made learning both practical and enjoyable. Olivia now confidently speaks in class!"
             stars={5}
-            image="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
           />
         </div>
       </div>
@@ -76,27 +70,18 @@ const TestimonialCard = ({
   subject,
   content,
   stars,
-  image,
 }: {
   name: string;
   relation: string;
   subject: string;
   content: string;
   stars: number;
-  image: string;
 }) => {
   return (
     <Card className="h-full p-6 hover:shadow-xl transition-all hover:-translate-y-1">
       <CardContent className="pt-6 h-full flex flex-col">
-        <div className="flex items-start gap-4 mb-5">
-          <div className="flex-shrink-0">
-            <img 
-              src={image} 
-              alt={name} 
-              className="w-14 h-14 rounded-full object-cover"
-            />
-          </div>
-          <div className="flex-grow">
+        <div className="flex flex-col mb-5">
+          <div>
             <p className="font-bold text-navy-600 text-lg">{name}</p>
             <p className="text-sm text-gray-600">{relation}</p>
             <p className="text-sm font-semibold text-navy-400">{subject}</p>
