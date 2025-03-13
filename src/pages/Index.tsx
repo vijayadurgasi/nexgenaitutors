@@ -6,6 +6,7 @@ import FeaturesSection from "@/components/home/FeaturesSection";
 import SubjectsSection from "@/components/home/SubjectsSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import CtaSection from "@/components/home/CtaSection";
+import ChatbotButton from "@/components/Chatbot/ChatbotButton";
 
 const Index = () => {
   return (
@@ -19,6 +20,7 @@ const Index = () => {
         <CtaSection />
       </main>
       <Footer />
+      <ChatbotButton />
     </div>
   );
 };

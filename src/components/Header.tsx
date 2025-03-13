@@ -76,6 +76,16 @@ const Header = () => {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link
+                    to="/blog"
+                    className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
+                  >
+                    Blog
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link
                     to="/about-us"
                     className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
                   >
@@ -110,13 +120,16 @@ const Header = () => {
         <div className="flex items-center space-x-4">
           {!isMobile ? (
             <>
-              <Button variant="ghost" className="hidden md:inline-flex">
+              <Button 
+                variant="ghost" 
+                className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900"
+              >
                 Log in
               </Button>
               <Button 
-                className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900"
+                className="bg-white text-navy-600 border border-navy-600 hover:bg-navy-50"
               >
-                Get Started
+                Sign Up
               </Button>
             </>
           ) : (
@@ -154,6 +167,12 @@ const Header = () => {
                     Teachers
                   </Link>
                   <Link 
+                    to="/blog" 
+                    className="text-lg font-medium hover:text-navy-600 transition-colors"
+                  >
+                    Blog
+                  </Link>
+                  <Link 
                     to="/about-us" 
                     className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
@@ -172,9 +191,16 @@ const Header = () => {
                     Packages
                   </Link>
                   <div className="pt-4 flex flex-col space-y-2">
-                    <Button variant="outline">Log in</Button>
-                    <Button className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900">
-                      Get Started
+                    <Button 
+                      className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900"
+                    >
+                      Log in
+                    </Button>
+                    <Button 
+                      variant="outline"
+                      className="border-navy-600 text-navy-600 hover:bg-navy-50"
+                    >
+                      Sign Up
                     </Button>
                   </div>
                 </div>
