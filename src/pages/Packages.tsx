@@ -2,7 +2,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
 
 const Packages = () => {
@@ -17,55 +17,6 @@ const Packages = () => {
             <p className="text-xl max-w-2xl mx-auto mb-8">
               Customized learning solutions designed to meet your educational goals
             </p>
-          </div>
-        </section>
-
-        {/* Packages Plans */}
-        <section className="py-20 bg-gray-50 dark:bg-gray-900">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              <PackageCard
-                title="Basic"
-                description="Perfect for individual students"
-                features={[
-                  "Access to all basic subjects",
-                  "5 AI tutoring sessions per week",
-                  "Progress tracking",
-                  "Basic assessments",
-                  "Email support"
-                ]}
-                buttonText="Get Started"
-                popular={false}
-              />
-              <PackageCard
-                title="Premium"
-                description="Ideal for dedicated students"
-                features={[
-                  "Access to all subjects",
-                  "Unlimited AI tutoring sessions",
-                  "Advanced progress analytics",
-                  "Personalized study plans",
-                  "Human tutor support (2 hrs/month)",
-                  "Priority email & chat support"
-                ]}
-                buttonText="Get Started"
-                popular={true}
-              />
-              <PackageCard
-                title="Family"
-                description="Great for families with multiple students"
-                features={[
-                  "Everything in Premium for 3 users",
-                  "Shared family dashboard",
-                  "Parent progress reports",
-                  "Human tutor support (5 hrs/month)",
-                  "24/7 priority support",
-                  "Family learning goals"
-                ]}
-                buttonText="Get Started"
-                popular={false}
-              />
-            </div>
           </div>
         </section>
 
@@ -194,57 +145,6 @@ const Packages = () => {
       </main>
       <Footer />
     </div>
-  );
-};
-
-const PackageCard = ({
-  title,
-  description,
-  features,
-  buttonText,
-  popular,
-}: {
-  title: string;
-  description: string;
-  features: string[];
-  buttonText: string;
-  popular: boolean;
-}) => {
-  return (
-    <Card className={`flex flex-col h-full transition-all duration-300 ${
-      popular ? "border-navy-500 shadow-lg scale-105 relative" : ""
-    }`}>
-      {popular && (
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-navy-600 text-white px-4 py-1 rounded-full text-sm font-medium">
-          Most Popular
-        </div>
-      )}
-      <CardHeader className="text-center">
-        <CardTitle className="text-2xl">{title}</CardTitle>
-        <p className="text-gray-600 dark:text-gray-400 mt-2">{description}</p>
-      </CardHeader>
-      <CardContent className="flex-grow">
-        <ul className="space-y-3">
-          {features.map((feature, index) => (
-            <li key={index} className="flex items-start">
-              <Check className="h-5 w-5 text-navy-500 mr-2 shrink-0" />
-              <span>{feature}</span>
-            </li>
-          ))}
-        </ul>
-      </CardContent>
-      <CardFooter>
-        <Button 
-          className={`w-full ${
-            popular 
-              ? "bg-navy-600 hover:bg-navy-700" 
-              : "bg-gray-900 hover:bg-gray-800"
-          }`}
-        >
-          {buttonText}
-        </Button>
-      </CardFooter>
-    </Card>
   );
 };
 

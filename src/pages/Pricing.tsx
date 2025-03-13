@@ -2,7 +2,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
 
 const Pricing = () => {
@@ -13,70 +13,90 @@ const Pricing = () => {
         {/* Pricing Hero */}
         <section className="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-20">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Simple, Transparent Pricing</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Flexible Learning Solutions</h1>
             <p className="text-xl max-w-2xl mx-auto mb-8">
-              Choose the plan that works for you. All plans include access to our AI tutoring platform.
+              Customized learning packages designed to meet your educational goals
             </p>
           </div>
         </section>
 
-        {/* Pricing Plans */}
-        <section className="py-20 bg-gray-50 dark:bg-gray-900">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              <PricingCard
-                title="Basic"
-                price="$29"
-                period="monthly"
-                description="Perfect for individual students"
-                features={[
-                  "Access to all basic subjects",
-                  "5 AI tutoring sessions per week",
-                  "Progress tracking",
-                  "Basic assessments",
-                  "Email support"
-                ]}
-                buttonText="Get Started"
-                popular={false}
-              />
-              <PricingCard
-                title="Premium"
-                price="$79"
-                period="monthly"
-                description="Ideal for dedicated students"
-                features={[
-                  "Access to all subjects",
-                  "Unlimited AI tutoring sessions",
-                  "Advanced progress analytics",
-                  "Personalized study plans",
-                  "Human tutor support (2 hrs/month)",
-                  "Priority email & chat support"
-                ]}
-                buttonText="Get Started"
-                popular={true}
-              />
-              <PricingCard
-                title="Family"
-                price="$119"
-                period="monthly"
-                description="Great for families with multiple students"
-                features={[
-                  "Everything in Premium for 3 users",
-                  "Shared family dashboard",
-                  "Parent progress reports",
-                  "Human tutor support (5 hrs/month)",
-                  "24/7 priority support",
-                  "Family learning goals"
-                ]}
-                buttonText="Get Started"
-                popular={false}
-              />
+        {/* Custom Packages Section */}
+        <section className="py-16 bg-white dark:bg-gray-800">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Custom Learning Solutions</h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                We offer tailored packages combining multiple subjects based on your specific needs. 
+                Contact us to discuss a custom learning solution that works for you.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <Card className="border-gray-200 hover:shadow-lg transition-all">
+                <CardHeader>
+                  <CardTitle>Subject Combinations</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2">
+                    <li className="flex items-start">
+                      <Check className="h-5 w-5 text-green-500 mr-2 shrink-0" />
+                      <span>STEM Package (Math, Sciences, Coding)</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Check className="h-5 w-5 text-green-500 mr-2 shrink-0" />
+                      <span>Humanities Package (Language, Literature, History)</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Check className="h-5 w-5 text-green-500 mr-2 shrink-0" />
+                      <span>College Prep Package (Customized for college admissions)</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Check className="h-5 w-5 text-green-500 mr-2 shrink-0" />
+                      <span>Test Preparation Package (SAT, ACT, AP exams)</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+              
+              <Card className="border-gray-200 hover:shadow-lg transition-all">
+                <CardHeader>
+                  <CardTitle>Group Learning</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2">
+                    <li className="flex items-start">
+                      <Check className="h-5 w-5 text-green-500 mr-2 shrink-0" />
+                      <span>Classroom packages for schools</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Check className="h-5 w-5 text-green-500 mr-2 shrink-0" />
+                      <span>Homeschool group discounts</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Check className="h-5 w-5 text-green-500 mr-2 shrink-0" />
+                      <span>Study group collaborations</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Check className="h-5 w-5 text-green-500 mr-2 shrink-0" />
+                      <span>Teacher-led classroom supplements</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+            
+            <div className="text-center mt-12">
+              <Button 
+                className="px-8 py-6 text-lg"
+              >
+                Contact Us for Custom Packages
+              </Button>
             </div>
           </div>
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 bg-white dark:bg-gray-800">
+        <section className="py-20 bg-gray-50 dark:bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
@@ -87,24 +107,24 @@ const Pricing = () => {
             
             <div className="max-w-3xl mx-auto space-y-6">
               <FaqItem 
-                question="Can I switch plans later?"
-                answer="Yes, you can upgrade or downgrade your plan at any time. Changes will take effect at the start of your next billing cycle."
+                question="How do I know which package is right for me?"
+                answer="We recommend starting with a free consultation where our education specialists can assess your needs and recommend the most suitable package."
               />
               <FaqItem 
-                question="Is there a free trial available?"
-                answer="Yes, we offer a 7-day free trial on all plans so you can experience the platform before committing."
+                question="Can I change my package later?"
+                answer="Yes, you can upgrade or modify your package at any time. We offer flexible solutions that grow with your educational needs."
               />
               <FaqItem 
                 question="How does AI tutoring work?"
                 answer="Our AI tutors analyze your learning style, strengths, and weaknesses to provide personalized instruction and practice. They adapt in real-time to your progress and needs."
               />
               <FaqItem 
-                question="Can I cancel my subscription anytime?"
-                answer="Yes, you can cancel your subscription at any time through your account settings. You'll continue to have access until the end of your current billing period."
+                question="Are there any commitment periods?"
+                answer="We offer flexible options to suit your needs. Please contact us for more information about our commitment options."
               />
               <FaqItem 
                 question="Are there discounts for educators or schools?"
-                answer="Yes, we offer special pricing for schools, districts, and educational institutions. Please contact our sales team for more information."
+                answer="Yes, we offer special arrangements for schools, districts, and educational institutions. Please contact our team for more information."
               />
             </div>
           </div>
@@ -118,72 +138,13 @@ const Pricing = () => {
               Join thousands of students who are already improving their grades with NextGen AI Tutors.
             </p>
             <Button size="lg" variant="secondary" className="text-lg px-8">
-              Start Your Free Trial
+              Get Started
             </Button>
           </div>
         </section>
       </main>
       <Footer />
     </div>
-  );
-};
-
-const PricingCard = ({
-  title,
-  price,
-  period,
-  description,
-  features,
-  buttonText,
-  popular,
-}: {
-  title: string;
-  price: string;
-  period: string;
-  description: string;
-  features: string[];
-  buttonText: string;
-  popular: boolean;
-}) => {
-  return (
-    <Card className={`flex flex-col h-full transition-all duration-300 ${
-      popular ? "border-purple-500 shadow-lg scale-105 relative" : ""
-    }`}>
-      {popular && (
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-purple-600 text-white px-4 py-1 rounded-full text-sm font-medium">
-          Most Popular
-        </div>
-      )}
-      <CardHeader className="text-center">
-        <CardTitle className="text-2xl">{title}</CardTitle>
-        <div className="mt-4">
-          <span className="text-4xl font-bold">{price}</span>
-          <span className="text-gray-500">/{period}</span>
-        </div>
-        <p className="text-gray-600 dark:text-gray-400 mt-2">{description}</p>
-      </CardHeader>
-      <CardContent className="flex-grow">
-        <ul className="space-y-3">
-          {features.map((feature, index) => (
-            <li key={index} className="flex items-start">
-              <Check className="h-5 w-5 text-green-500 mr-2 shrink-0" />
-              <span>{feature}</span>
-            </li>
-          ))}
-        </ul>
-      </CardContent>
-      <CardFooter>
-        <Button 
-          className={`w-full ${
-            popular 
-              ? "bg-purple-600 hover:bg-purple-700" 
-              : "bg-gray-900 hover:bg-gray-800"
-          }`}
-        >
-          {buttonText}
-        </Button>
-      </CardFooter>
-    </Card>
   );
 };
 

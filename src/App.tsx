@@ -13,6 +13,7 @@ import SubjectsPage from "./pages/SubjectsPage";
 import SubjectDetails from "./pages/SubjectDetails";
 import SciencesPage from "./pages/SciencesPage";
 import LanguagesPage from "./pages/LanguagesPage";
+import ChatbotButton from "./components/Chatbot/ChatbotButton";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/subjects/sciences" element={<SciencesPage />} />
           <Route path="/subjects/languages" element={<LanguagesPage />} />
         </Routes>
+        <ChatbotButton />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
