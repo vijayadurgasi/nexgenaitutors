@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const CtaSection = () => {
   return (
-    <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16 relative overflow-hidden">
+    <section className="bg-gradient-to-r from-navy-700 to-navy-900 text-white py-16 relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <img
           src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
