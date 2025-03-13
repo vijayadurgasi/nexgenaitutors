@@ -81,25 +81,6 @@ const AboutUs = () => {
             </div>
           </div>
 
-          {/* Team Section */}
-          <h2 className="text-3xl font-bold text-navy-800 mb-8 text-center">Leadership Team</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {leadershipTeam.map((member) => (
-              <div key={member.id} className="text-center">
-                <div className="w-48 h-48 mx-auto mb-4 overflow-hidden rounded-full">
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-navy-800">{member.name}</h3>
-                <p className="text-navy-600 mb-2">{member.role}</p>
-                <p className="text-gray-600">{member.bio}</p>
-              </div>
-            ))}
-          </div>
-
           {/* CTA Section */}
           <div className="bg-navy-50 p-10 rounded-xl text-center">
             <h2 className="text-3xl font-bold text-navy-800 mb-6">Join the NextGen Learning Revolution</h2>
@@ -118,29 +99,5 @@ const AboutUs = () => {
     </div>
   );
 };
-
-const leadershipTeam = [
-  {
-    id: 1,
-    name: "Dr. Rebecca Taylor",
-    role: "Founder & CEO",
-    bio: "Former education professor with 20+ years of experience in educational technology and learning science.",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=800&auto=format&fit=crop"
-  },
-  {
-    id: 2,
-    name: "Alex Mercer",
-    role: "Chief Technology Officer",
-    bio: "AI specialist with experience at leading tech companies, focused on developing adaptive learning algorithms.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop"
-  },
-  {
-    id: 3,
-    name: "Dr. Miguel Sanchez",
-    role: "Chief Academic Officer",
-    bio: "Educational psychologist specializing in personalized learning and curriculum development.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
-  }
-];
 
 export default AboutUs;
