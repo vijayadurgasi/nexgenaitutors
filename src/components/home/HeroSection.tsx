@@ -15,11 +15,6 @@ const HeroSection = () => {
               Personalized learning experiences powered by advanced artificial intelligence
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/packages">
-                <Button size="lg" variant="secondary" className="text-lg w-full sm:w-auto">
-                  Start Learning Today
-                </Button>
-              </Link>
               <Link to="/contact-us">
                 <Button size="lg" variant="outline" className="text-lg bg-transparent border-white text-white hover:bg-white/10 w-full sm:w-auto">
                   Book a Demo Today

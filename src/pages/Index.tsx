@@ -5,7 +5,6 @@ import HeroSection from "@/components/home/HeroSection";
 import FeaturesSection from "@/components/home/FeaturesSection";
 import SubjectsSection from "@/components/home/SubjectsSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
-import StatisticsSection from "@/components/home/StatisticsSection";
 import CtaSection from "@/components/home/CtaSection";
 
 const Index = () => {
@@ -15,7 +14,6 @@ const Index = () => {
       <main className="flex-grow">
         <HeroSection />
         <FeaturesSection />
-        <StatisticsSection />
         <SubjectsSection />
         <TestimonialsSection />
         <CtaSection />

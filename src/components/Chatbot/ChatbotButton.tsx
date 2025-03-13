@@ -13,22 +13,22 @@ const ChatbotButton = () => {
 
   return (
     <>
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-4 right-4 z-50">
         <Button 
           onClick={toggleChatbot} 
-          className="w-14 h-14 rounded-full bg-navy-600 hover:bg-navy-700 shadow-lg"
+          className="w-12 h-12 rounded-full bg-navy-600 hover:bg-navy-700 shadow-lg"
           size="icon"
         >
           {isOpen ? (
-            <X className="h-6 w-6" />
+            <X className="h-5 w-5" />
           ) : (
-            <MessageCircle className="h-6 w-6" />
+            <MessageCircle className="h-5 w-5" />
           )}
         </Button>
       </div>
 
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-full sm:w-96 bg-white rounded-lg shadow-xl overflow-hidden transition-all duration-300 ease-in-out">
+        <div className="fixed bottom-20 right-4 z-50 w-[320px] bg-white rounded-lg shadow-xl overflow-hidden transition-all duration-300 ease-in-out">
           <ChatbotForm onClose={() => setIsOpen(false)} />
         </div>
       )}
