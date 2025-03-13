@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -95,10 +96,10 @@ const Header = () => {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link
-                    to="/pricing"
+                    to="/packages"
                     className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
                   >
-                    Pricing
+                    Packages
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
@@ -165,10 +166,10 @@ const Header = () => {
                     Contact Us
                   </Link>
                   <Link 
-                    to="/pricing" 
+                    to="/packages" 
                     className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
-                    Pricing
+                    Packages
                   </Link>
                   <div className="pt-4 flex flex-col space-y-2">
                     <Button variant="outline">Log in</Button>
@@ -229,8 +230,8 @@ const subjects = [
     href: "/subjects/sciences",
   },
   {
-    title: "Computer Science",
-    description: "Programming, web development, and more",
+    title: "Coding and AI",
+    description: "Programming, web development, and artificial intelligence",
     href: "/subjects/computer-science",
   },
 ];
