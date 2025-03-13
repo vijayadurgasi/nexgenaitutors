@@ -87,10 +87,10 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
 
   return (
     <div className="flex flex-col max-h-[80vh]">
-      <div className="bg-navy-600 text-white p-4 flex justify-between items-center">
-        <h3 className="text-lg font-semibold">NextGen AI Tutors</h3>
-        <Button variant="ghost" size="icon" onClick={onClose} className="text-white hover:bg-navy-700">
-          <X className="h-5 w-5" />
+      <div className="bg-navy-600 text-white p-3 flex justify-between items-center">
+        <h3 className="text-base font-medium">NextGen AI Tutors</h3>
+        <Button variant="ghost" size="icon" onClick={onClose} className="text-white hover:bg-navy-700 h-7 w-7">
+          <X className="h-4 w-4" />
         </Button>
       </div>
       

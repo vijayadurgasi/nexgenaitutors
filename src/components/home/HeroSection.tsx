@@ -9,10 +9,10 @@ const HeroSection = () => {
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="text-left">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Unlock Your Learning Potential with AI Tutoring
+              Personalized Learning With Expert Tutors
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-100 max-w-lg">
-              Personalized learning experiences powered by advanced artificial intelligence
+              One-on-one sessions with experienced teachers tailored to your learning style
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/contact-us">
