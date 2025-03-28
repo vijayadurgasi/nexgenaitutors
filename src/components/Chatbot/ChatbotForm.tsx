@@ -1,9 +1,11 @@
+
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import emailjs from '@emailjs/browser';
 
 interface ChatbotFormProps {
@@ -135,7 +137,7 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
   }, [onClose]);
 
   return (
-    <div className="flex flex-col max-h-[80vh]" ref={formRef}>
+    <div className="flex flex-col h-[500px] max-h-[80vh]" ref={formRef}>
       <div className="bg-navy-600 text-white p-2 flex justify-between items-center">
         <h3 className="text-sm font-medium">NextGen AI Tutors</h3>
         <Button variant="ghost" size="icon" onClick={onClose} className="text-white hover:bg-navy-700 h-6 w-6">
@@ -143,87 +145,89 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
         </Button>
       </div>
       
-      <div className="p-4 overflow-y-auto">
-        <div className="bg-navy-100 p-3 rounded-lg mb-4 text-navy-800">
-          <p>Hey there, please leave your details so we can contact you even if you are no longer on the site.</p>
+      <ScrollArea className="flex-grow">
+        <div className="p-4">
+          <div className="bg-navy-100 p-3 rounded-lg mb-4 text-navy-800">
+            <p>Hey there, please leave your details so we can contact you even if you are no longer on the site.</p>
+          </div>
+          
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <label htmlFor="name" className="block text-sm font-medium">
+                Name
+              </label>
+              <Input
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Enter your name"
+                className={errors.name ? "border-red-500" : ""}
+              />
+              {errors.name && (
+                <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+              )}
+            </div>
+            
+            <div className="space-y-2">
+              <label htmlFor="email" className="block text-sm font-medium">
+                Email
+              </label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Enter your email"
+                className={errors.email ? "border-red-500" : ""}
+              />
+              {errors.email && (
+                <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+              )}
+            </div>
+            
+            <div className="space-y-2">
+              <label htmlFor="phone" className="block text-sm font-medium">
+                Phone
+              </label>
+              <Input
+                id="phone"
+                name="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="Enter your phone number"
+                className={errors.phone ? "border-red-500" : ""}
+              />
+              {errors.phone && (
+                <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
+              )}
+            </div>
+            
+            <div className="space-y-2">
+              <label htmlFor="message" className="block text-sm font-medium">
+                Message
+              </label>
+              <Textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Enter your message"
+                rows={3}
+              />
+            </div>
+            
+            <Button 
+              type="submit"
+              className="w-full bg-navy-600 hover:bg-navy-700"
+            >
+              Submit
+            </Button>
+          </form>
         </div>
-        
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <label htmlFor="name" className="block text-sm font-medium">
-              Name
-            </label>
-            <Input
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Enter your name"
-              className={errors.name ? "border-red-500" : ""}
-            />
-            {errors.name && (
-              <p className="text-red-500 text-xs mt-1">{errors.name}</p>
-            )}
-          </div>
-          
-          <div className="space-y-2">
-            <label htmlFor="email" className="block text-sm font-medium">
-              Email
-            </label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
-              className={errors.email ? "border-red-500" : ""}
-            />
-            {errors.email && (
-              <p className="text-red-500 text-xs mt-1">{errors.email}</p>
-            )}
-          </div>
-          
-          <div className="space-y-2">
-            <label htmlFor="phone" className="block text-sm font-medium">
-              Phone
-            </label>
-            <Input
-              id="phone"
-              name="phone"
-              type="tel"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="Enter your phone number"
-              className={errors.phone ? "border-red-500" : ""}
-            />
-            {errors.phone && (
-              <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
-            )}
-          </div>
-          
-          <div className="space-y-2">
-            <label htmlFor="message" className="block text-sm font-medium">
-              Message
-            </label>
-            <Textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Enter your message"
-              rows={3}
-            />
-          </div>
-          
-          <Button 
-            type="submit"
-            className="w-full bg-navy-600 hover:bg-navy-700"
-          >
-            Submit
-          </Button>
-        </form>
-      </div>
+      </ScrollArea>
     </div>
   );
 };
