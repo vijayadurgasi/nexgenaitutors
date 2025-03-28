@@ -27,6 +27,11 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
     phone: "",
   });
 
+  // Initialize EmailJS when component mounts
+  useEffect(() => {
+    emailjs.init("YOUR_PUBLIC_KEY");
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -87,7 +92,7 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
         'service_id', // Replace with your EmailJS service ID
         'template_id', // Replace with your EmailJS template ID
         templateParams,
-        'user_id' // Replace with your EmailJS user ID
+        'YOUR_PUBLIC_KEY' // Use your public key here as well
       )
       .then(() => {
         toast({

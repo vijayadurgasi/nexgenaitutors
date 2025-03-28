@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -18,6 +18,12 @@ import { useToast } from "@/hooks/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import emailjs from 'emailjs-com';
+
+// Initialize EmailJS with your public key
+// Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
+useEffect(() => {
+  emailjs.init("YOUR_PUBLIC_KEY");
+}, []);
 
 // Define form schema with validation
 const formSchema = z.object({
@@ -43,6 +49,11 @@ type BookingFormProps = {
 const BookingForm = ({ subjectTitle }: BookingFormProps) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Initialize EmailJS when component mounts
+  useEffect(() => {
+    emailjs.init("YOUR_PUBLIC_KEY");
+  }, []);
 
   // Initialize form
   const form = useForm<z.infer<typeof formSchema>>({
@@ -75,7 +86,7 @@ const BookingForm = ({ subjectTitle }: BookingFormProps) => {
       'service_id', // Replace with your EmailJS service ID
       'template_id', // Replace with your EmailJS template ID
       templateParams,
-      'user_id' // Replace with your EmailJS user ID
+      'YOUR_PUBLIC_KEY' // Use your public key here as well
     )
     .then(() => {
       setIsSubmitting(false);
