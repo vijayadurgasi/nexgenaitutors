@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -17,7 +16,7 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { sendEmail } from "@/utils/emailService";
+import emailjs from '@emailjs/browser';
 
 // Define form schema with validation
 const formSchema = z.object({
@@ -44,6 +43,11 @@ const BookingForm = ({ subjectTitle }: BookingFormProps) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Initialize EmailJS when component mounts
+  useEffect(() => {
+    emailjs.init("7RblBhwwGr6fCUCIb");
+  }, []);
+
   // Initialize form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -57,18 +61,29 @@ const BookingForm = ({ subjectTitle }: BookingFormProps) => {
   });
 
   // Form submission handler
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     
-    try {
-      await sendEmail({
-        name: values.name,
-        email: values.email,
-        phone: values.phone,
-        message: values.message || `Hello, demo class enquiry for ${subjectTitle || "General Tutoring"}`,
-        subject: subjectTitle ? `Booking Request for ${subjectTitle}` : "New Booking Request",
-        preferredTime: values.preferredTime,
-      });
+    // Match template variables exactly with the HTML template
+    const templateParams = {
+      name: values.name,
+      email: values.email,
+      phone: values.phone,
+      message: values.message || `Hello, demo class enquiry for ${subjectTitle || "General Tutoring"}`,
+      // Keep these for additional context but they won't be used in the HTML template
+      subject: subjectTitle ? `Booking Request for ${subjectTitle}` : "New Booking Request",
+      preferredTime: values.preferredTime,
+    };
+    
+    // Send email using EmailJS
+    emailjs.send(
+      'service_zcmgodr',
+      'template_mb1ojsf',
+      templateParams,
+      '7RblBhwwGr6fCUCIb'
+    )
+    .then(() => {
+      setIsSubmitting(false);
       
       toast({
         title: "Booking Request Submitted!",
@@ -76,8 +91,10 @@ const BookingForm = ({ subjectTitle }: BookingFormProps) => {
       });
       
       form.reset();
-    } catch (error) {
+    })
+    .catch((error) => {
       console.error("Email sending failed:", error);
+      setIsSubmitting(false);
       
       toast({
         title: "Submission Received",
@@ -87,9 +104,9 @@ const BookingForm = ({ subjectTitle }: BookingFormProps) => {
       
       // Still reset the form since we captured the data
       form.reset();
-    } finally {
-      setIsSubmitting(false);
-    }
+    });
+    
+    console.log(values);
   }
 
   return (
