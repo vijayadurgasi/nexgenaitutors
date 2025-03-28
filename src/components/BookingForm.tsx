@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -64,7 +65,7 @@ const BookingForm = ({ subjectTitle }: BookingFormProps) => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     
-    // Prepare email template parameters
+    // Prepare email template parameters with explicit field names for all user details
     const templateParams = {
       from_name: values.name,
       from_email: values.email,
@@ -72,14 +73,21 @@ const BookingForm = ({ subjectTitle }: BookingFormProps) => {
       preferred_time: values.preferredTime,
       message: values.message || "No additional message",
       subject: subjectTitle ? `Booking Request for ${subjectTitle}` : "New Booking Request",
+      // Add explicit fields that match the EmailJS template variables
+      name: values.name,
+      email: values.email,
+      phone: values.phone,
+      preferredTime: values.preferredTime,
+      user_message: values.message || "demo class required",
+      booking_subject: subjectTitle || "General Tutoring",
     };
     
     // Send email using EmailJS
     emailjs.send(
-      'service_zcmgodr', // Replace with your EmailJS service ID
-      'template_mb1ojsf', // Replace with your EmailJS template ID
+      'service_zcmgodr',
+      'template_mb1ojsf',
       templateParams,
-      '7RblBhwwGr6fCUCIb' // Use your public key here as well
+      '7RblBhwwGr6fCUCIb'
     )
     .then(() => {
       setIsSubmitting(false);

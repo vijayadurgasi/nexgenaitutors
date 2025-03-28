@@ -78,21 +78,25 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
     e.preventDefault();
     
     if (validateForm()) {
-      // Prepare email template parameters
+      // Prepare email template parameters with clear field names
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
         phone_number: formData.phone,
         message: formData.message || "No message provided",
         subject: "New Chatbot Inquiry",
+        name: formData.name,          // Add explicit name field
+        email: formData.email,        // Add explicit email field
+        phone: formData.phone,        // Add explicit phone field
+        user_message: formData.message || "demo class required", // Add explicit message field with default
       };
       
       // Send email using EmailJS
       emailjs.send(
-        'service_zcmgodr', // Replace with your EmailJS service ID
-        'template_mb1ojsf', // Replace with your EmailJS template ID
+        'service_zcmgodr',
+        'template_mb1ojsf',
         templateParams,
-        '7RblBhwwGr6fCUCIb' // Use your public key here as well
+        '7RblBhwwGr6fCUCIb'
       )
       .then(() => {
         toast({
