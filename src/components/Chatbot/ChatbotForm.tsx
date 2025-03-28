@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -78,17 +77,13 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
     e.preventDefault();
     
     if (validateForm()) {
-      // Prepare email template parameters with clear field names
+      // Match template variables exactly with the HTML template
       const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        phone_number: formData.phone,
-        message: formData.message || "No message provided",
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message || "Hello, demo class enquiry",
         subject: "New Chatbot Inquiry",
-        name: formData.name,          // Add explicit name field
-        email: formData.email,        // Add explicit email field
-        phone: formData.phone,        // Add explicit phone field
-        user_message: formData.message || "demo class required", // Add explicit message field with default
       };
       
       // Send email using EmailJS
