@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -5,6 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from '@emailjs/browser';
+import { validateForm } from "@/utils/formValidation";
+import { sendEmail } from "@/utils/emailService";
 
 interface ChatbotFormProps {
   onClose: () => void;
@@ -25,6 +28,8 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
     email: "",
     phone: "",
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Initialize EmailJS when component mounts
   useEffect(() => {
@@ -47,76 +52,49 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
     }
   };
 
-  const validateForm = () => {
-    let isValid = true;
-    const newErrors = { name: "", email: "", phone: "" };
-    
-    if (!formData.name.trim()) {
-      newErrors.name = "Please add your name";
-      isValid = false;
-    }
-    
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-      isValid = false;
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
-      isValid = false;
-    }
-    
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required";
-      isValid = false;
-    }
-    
-    setErrors(newErrors);
-    return isValid;
+  const validateFormFields = () => {
+    const validationResult = validateForm(formData);
+    setErrors(validationResult.errors);
+    return validationResult.isValid;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (validateForm()) {
-      // Match template variables exactly with the HTML template
-      const templateParams = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        message: formData.message || "Hello, demo class enquiry",
-        subject: "New Chatbot Inquiry",
-      };
-      
-      // Send email using EmailJS
-      emailjs.send(
-        'service_zcmgodr',
-        'template_mb1ojsf',
-        templateParams,
-        '7RblBhwwGr6fCUCIb'
-      )
-      .then(() => {
-        toast({
-          title: "Thank you for your message!",
-          description: "We'll get back to you as soon as possible.",
-        });
-        
-        // Reset form and close
-        setFormData({ name: "", email: "", phone: "", message: "" });
-        onClose();
-      })
-      .catch((error) => {
-        console.error("Email sending failed:", error);
-        
-        toast({
-          title: "Message Received",
-          description: "Your inquiry was recorded but there was an issue with email notification. We'll still contact you soon.",
-        });
-        
-        // Still reset form and close since we captured the data
-        setFormData({ name: "", email: "", phone: "", message: "" });
-        onClose();
+    if (!validateFormFields()) {
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    try {
+      await sendEmail({
+        ...formData,
+        defaultMessage: "Hello, demo class enquiry",
+        subject: "New Chatbot Inquiry"
       });
       
-      console.log("Form submitted:", formData);
+      toast({
+        title: "Thank you for your message!",
+        description: "We'll get back to you as soon as possible.",
+      });
+      
+      // Reset form and close
+      setFormData({ name: "", email: "", phone: "", message: "" });
+      onClose();
+    } catch (error) {
+      console.error("Email sending failed:", error);
+      
+      toast({
+        title: "Message Received",
+        description: "Your inquiry was recorded but there was an issue with email notification. We'll still contact you soon.",
+      });
+      
+      // Still reset form and close since we captured the data
+      setFormData({ name: "", email: "", phone: "", message: "" });
+      onClose();
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -160,6 +138,7 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
               onChange={handleChange}
               placeholder="Enter your name"
               className={errors.name ? "border-red-500" : ""}
+              disabled={isSubmitting}
             />
             {errors.name && (
               <p className="text-red-500 text-xs mt-1">{errors.name}</p>
@@ -178,6 +157,7 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
               onChange={handleChange}
               placeholder="Enter your email"
               className={errors.email ? "border-red-500" : ""}
+              disabled={isSubmitting}
             />
             {errors.email && (
               <p className="text-red-500 text-xs mt-1">{errors.email}</p>
@@ -196,6 +176,7 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
               onChange={handleChange}
               placeholder="Enter your phone number"
               className={errors.phone ? "border-red-500" : ""}
+              disabled={isSubmitting}
             />
             {errors.phone && (
               <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
@@ -213,14 +194,16 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
               onChange={handleChange}
               placeholder="Enter your message"
               rows={3}
+              disabled={isSubmitting}
             />
           </div>
           
           <Button 
             type="submit"
             className="w-full bg-navy-600 hover:bg-navy-700"
+            disabled={isSubmitting}
           >
-            Submit
+            {isSubmitting ? "Submitting..." : "Submit"}
           </Button>
         </form>
       </div>
