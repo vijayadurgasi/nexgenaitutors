@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 
 interface ChatbotFormProps {
   onClose: () => void;
