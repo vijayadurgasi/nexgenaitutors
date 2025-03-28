@@ -1,4 +1,5 @@
 
+import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -6,6 +7,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
 
 const Pricing = () => {
+  const navigate = useNavigate();
+
+  const navigateToContact = () => {
+    navigate("/contact-us#contact-form");
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -88,6 +95,7 @@ const Pricing = () => {
             <div className="text-center mt-12">
               <Button 
                 className="px-8 py-6 text-lg"
+                onClick={navigateToContact}
               >
                 Contact Us for Custom Packages
               </Button>
@@ -137,7 +145,7 @@ const Pricing = () => {
             <p className="text-xl mb-8 max-w-2xl mx-auto">
               Join thousands of students who are already improving their grades with NextGen AI Tutors.
             </p>
-            <Button size="lg" variant="secondary" className="text-lg px-8">
+            <Button size="lg" variant="secondary" className="text-lg px-8" onClick={navigateToContact}>
               Get Started
             </Button>
           </div>

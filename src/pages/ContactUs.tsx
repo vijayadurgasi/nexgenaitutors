@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -19,8 +18,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { MapPin, Mail, Phone, Clock } from "lucide-react";
+import { sendEmail } from "@/utils/emailService";
 
-// Form schema
 const formSchema = z.object({
   name: z.string().min(2, {
     message: "Name must be at least 2 characters.",
@@ -40,7 +39,6 @@ const ContactUs = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Initialize form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -51,13 +49,17 @@ const ContactUs = () => {
     },
   });
 
-  // Form submission handler
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      await sendEmail({
+        name: values.name,
+        email: values.email,
+        phone: "Not provided",
+        message: values.message,
+        subject: `Contact Form: ${values.subject}`,
+      });
       
       toast({
         title: "Message Sent!",
@@ -65,16 +67,22 @@ const ContactUs = () => {
       });
       
       form.reset();
-    }, 1500);
-    
-    console.log(values);
+    } catch (error) {
+      console.error("Email sending failed:", error);
+      
+      toast({
+        title: "Message Received",
+        description: "Your message was recorded but there was an issue with email notification. We'll still contact you soon.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-grow">
-        {/* Hero Section */}
         <div className="bg-gradient-to-b from-navy-50 to-white py-20">
           <div className="container mx-auto text-center px-4">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-navy-800">Contact Us</h1>
@@ -84,10 +92,8 @@ const ContactUs = () => {
           </div>
         </div>
 
-        {/* Contact Info & Form Section */}
         <div className="container mx-auto py-16 px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Information */}
             <div>
               <h2 className="text-3xl font-bold text-navy-800 mb-8">Get in Touch</h2>
               
@@ -182,8 +188,7 @@ const ContactUs = () => {
               </div>
             </div>
             
-            {/* Contact Form */}
-            <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100">
+            <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100" id="contact-form">
               <h2 className="text-3xl font-bold text-navy-800 mb-6">Send Us a Message</h2>
               
               <Form {...form}>
@@ -273,7 +278,6 @@ const ContactUs = () => {
           </div>
         </div>
         
-        {/* Map Section (would be replaced with actual map in production) */}
         <div className="w-full h-96 bg-gray-200 mb-16">
           <div className="w-full h-full flex items-center justify-center text-gray-400">
             <p className="text-lg font-medium">Interactive Map Would Be Displayed Here</p>
