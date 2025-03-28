@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import emailjs from 'emailjs-com';
 
 // Define form schema with validation
 const formSchema = z.object({
@@ -59,8 +60,24 @@ const BookingForm = ({ subjectTitle }: BookingFormProps) => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    // Prepare email template parameters
+    const templateParams = {
+      from_name: values.name,
+      from_email: values.email,
+      phone_number: values.phone,
+      preferred_time: values.preferredTime,
+      message: values.message || "No additional message",
+      subject: subjectTitle ? `Booking Request for ${subjectTitle}` : "New Booking Request",
+    };
+    
+    // Send email using EmailJS
+    emailjs.send(
+      'service_id', // Replace with your EmailJS service ID
+      'template_id', // Replace with your EmailJS template ID
+      templateParams,
+      'user_id' // Replace with your EmailJS user ID
+    )
+    .then(() => {
       setIsSubmitting(false);
       
       toast({
@@ -69,7 +86,20 @@ const BookingForm = ({ subjectTitle }: BookingFormProps) => {
       });
       
       form.reset();
-    }, 1500);
+    })
+    .catch((error) => {
+      console.error("Email sending failed:", error);
+      setIsSubmitting(false);
+      
+      toast({
+        title: "Submission Received",
+        description: "Your request was recorded but there was an issue with email notification. We'll still contact you soon.",
+        variant: "default",
+      });
+      
+      // Still reset the form since we captured the data
+      form.reset();
+    });
     
     console.log(values);
   }

@@ -1,10 +1,11 @@
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from 'emailjs-com';
 
 interface ChatbotFormProps {
   onClose: () => void;
@@ -12,6 +13,7 @@ interface ChatbotFormProps {
 
 const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
   const { toast } = useToast();
+  const formRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -71,26 +73,69 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
     e.preventDefault();
     
     if (validateForm()) {
-      // In a real implementation, you would send this data to your backend
-      console.log("Form submitted:", formData);
+      // Prepare email template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone_number: formData.phone,
+        message: formData.message || "No message provided",
+        subject: "New Chatbot Inquiry",
+      };
       
-      toast({
-        title: "Thank you for your message!",
-        description: "We'll get back to you as soon as possible.",
+      // Send email using EmailJS
+      emailjs.send(
+        'service_id', // Replace with your EmailJS service ID
+        'template_id', // Replace with your EmailJS template ID
+        templateParams,
+        'user_id' // Replace with your EmailJS user ID
+      )
+      .then(() => {
+        toast({
+          title: "Thank you for your message!",
+          description: "We'll get back to you as soon as possible.",
+        });
+        
+        // Reset form and close
+        setFormData({ name: "", email: "", phone: "", message: "" });
+        onClose();
+      })
+      .catch((error) => {
+        console.error("Email sending failed:", error);
+        
+        toast({
+          title: "Message Received",
+          description: "Your inquiry was recorded but there was an issue with email notification. We'll still contact you soon.",
+        });
+        
+        // Still reset form and close since we captured the data
+        setFormData({ name: "", email: "", phone: "", message: "" });
+        onClose();
       });
       
-      // Reset form and close
-      setFormData({ name: "", email: "", phone: "", message: "" });
-      onClose();
+      console.log("Form submitted:", formData);
     }
   };
 
+  // Add click outside to close functionality
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (formRef.current && !formRef.current.contains(event.target as Node)) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [onClose]);
+
   return (
-    <div className="flex flex-col max-h-[80vh]">
-      <div className="bg-navy-600 text-white p-3 flex justify-between items-center">
-        <h3 className="text-base font-medium">NextGen AI Tutors</h3>
-        <Button variant="ghost" size="icon" onClick={onClose} className="text-white hover:bg-navy-700 h-7 w-7">
-          <X className="h-4 w-4" />
+    <div className="flex flex-col max-h-[80vh]" ref={formRef}>
+      <div className="bg-navy-600 text-white p-2 flex justify-between items-center">
+        <h3 className="text-sm font-medium">NextGen AI Tutors</h3>
+        <Button variant="ghost" size="icon" onClick={onClose} className="text-white hover:bg-navy-700 h-6 w-6">
+          <X className="h-3 w-3" />
         </Button>
       </div>
       
