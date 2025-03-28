@@ -30,6 +30,8 @@ export async function sendEmail(data: EmailData): Promise<any> {
     // Include any additional context parameters that might be useful
     subject: data.subject || "New Inquiry",
     preferredTime: data.preferredTime || "",
+    // Add reply_to parameter to send a copy to the user
+    reply_to: data.email,
   };
   
   console.log("Sending email with parameters:", templateParams);
