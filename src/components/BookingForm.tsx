@@ -45,7 +45,7 @@ const BookingForm = ({ subjectTitle }: BookingFormProps) => {
 
   // Initialize EmailJS when component mounts
   useEffect(() => {
-    emailjs.init("YOUR_PUBLIC_KEY");
+    emailjs.init("7RblBhwwGr6fCUCIb");
   }, []);
 
   // Initialize form
@@ -76,10 +76,10 @@ const BookingForm = ({ subjectTitle }: BookingFormProps) => {
     
     // Send email using EmailJS
     emailjs.send(
-      'service_id', // Replace with your EmailJS service ID
-      'template_id', // Replace with your EmailJS template ID
+      'service_zcmgodr', // Replace with your EmailJS service ID
+      'template_mb1ojsf', // Replace with your EmailJS template ID
       templateParams,
-      'YOUR_PUBLIC_KEY' // Use your public key here as well
+      '7RblBhwwGr6fCUCIb' // Use your public key here as well
     )
     .then(() => {
       setIsSubmitting(false);
