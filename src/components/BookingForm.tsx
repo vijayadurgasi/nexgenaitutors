@@ -16,7 +16,7 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import emailjs from '@emailjs/browser';
+import { sendEmail } from "@/utils/emailService";
 
 // Define form schema with validation
 const formSchema = z.object({
@@ -37,16 +37,12 @@ const formSchema = z.object({
 
 type BookingFormProps = {
   subjectTitle?: string;
+  isTeacherForm?: boolean;
 };
 
-const BookingForm = ({ subjectTitle }: BookingFormProps) => {
+const BookingForm = ({ subjectTitle, isTeacherForm = false }: BookingFormProps) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // Initialize EmailJS when component mounts
-  useEffect(() => {
-    emailjs.init("7RblBhwwGr6fCUCIb");
-  }, []);
 
   // Initialize form
   const form = useForm<z.infer<typeof formSchema>>({
@@ -56,7 +52,9 @@ const BookingForm = ({ subjectTitle }: BookingFormProps) => {
       email: "",
       phone: "",
       preferredTime: "",
-      message: subjectTitle ? `I'm interested in the ${subjectTitle} subject.` : "",
+      message: isTeacherForm 
+        ? "I'm interested in joining as a teacher."
+        : subjectTitle ? `I'm interested in the ${subjectTitle} subject.` : "",
     },
   });
 
@@ -64,47 +62,52 @@ const BookingForm = ({ subjectTitle }: BookingFormProps) => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     
-    // Match template variables exactly with the HTML template
-    const templateParams = {
+    const templateId = isTeacherForm ? 'template_r4qaywg' : 'template_mb1ojsf';
+    const subjectPrefix = isTeacherForm ? "Teacher Application" : "Booking Request";
+    
+    // Prepare email data
+    const emailData = {
       name: values.name,
       email: values.email,
       phone: values.phone,
-      message: values.message || `Hello, demo class enquiry for ${subjectTitle || "General Tutoring"}`,
-      // Keep these for additional context but they won't be used in the HTML template
-      subject: subjectTitle ? `Booking Request for ${subjectTitle}` : "New Booking Request",
+      message: values.message || 
+        (isTeacherForm 
+          ? `Hello, I'd like to apply as a teacher.` 
+          : `Hello, demo class enquiry for ${subjectTitle || "General Tutoring"}`),
+      subject: subjectTitle 
+        ? `${subjectPrefix} for ${subjectTitle}` 
+        : `New ${subjectPrefix}`,
       preferredTime: values.preferredTime,
+      templateId: templateId,
     };
     
-    // Send email using EmailJS
-    emailjs.send(
-      'service_zcmgodr',
-      'template_mb1ojsf',
-      templateParams,
-      '7RblBhwwGr6fCUCIb'
-    )
-    .then(() => {
-      setIsSubmitting(false);
-      
-      toast({
-        title: "Booking Request Submitted!",
-        description: "We'll contact you soon to confirm your free demo session.",
+    // Send email using the emailService utility
+    sendEmail(emailData)
+      .then(() => {
+        setIsSubmitting(false);
+        
+        toast({
+          title: isTeacherForm ? "Application Submitted!" : "Booking Request Submitted!",
+          description: isTeacherForm 
+            ? "We'll contact you soon about your teaching application." 
+            : "We'll contact you soon to confirm your free demo session.",
+        });
+        
+        form.reset();
+      })
+      .catch((error) => {
+        console.error("Email sending failed:", error);
+        setIsSubmitting(false);
+        
+        toast({
+          title: "Submission Received",
+          description: "Your request was recorded but there was an issue with email notification. We'll still contact you soon.",
+          variant: "default",
+        });
+        
+        // Still reset the form since we captured the data
+        form.reset();
       });
-      
-      form.reset();
-    })
-    .catch((error) => {
-      console.error("Email sending failed:", error);
-      setIsSubmitting(false);
-      
-      toast({
-        title: "Submission Received",
-        description: "Your request was recorded but there was an issue with email notification. We'll still contact you soon.",
-        variant: "default",
-      });
-      
-      // Still reset the form since we captured the data
-      form.reset();
-    });
     
     console.log(values);
   }
@@ -204,7 +207,7 @@ const BookingForm = ({ subjectTitle }: BookingFormProps) => {
           className="w-full bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900"
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Submitting..." : "Book My Free Demo Session"}
+          {isSubmitting ? "Submitting..." : isTeacherForm ? "Submit Application" : "Book My Free Demo Session"}
         </Button>
       </form>
     </Form>

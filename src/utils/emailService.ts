@@ -5,7 +5,7 @@ import emailjs from '@emailjs/browser';
 emailjs.init("7RblBhwwGr6fCUCIb");
 
 const SERVICE_ID = 'service_zcmgodr';
-const TEMPLATE_ID = 'template_mb1ojsf';
+const DEFAULT_TEMPLATE_ID = 'template_mb1ojsf';
 const PUBLIC_KEY = '7RblBhwwGr6fCUCIb';
 
 interface EmailData {
@@ -16,6 +16,7 @@ interface EmailData {
   subject?: string;
   preferredTime?: string;
   defaultMessage?: string;
+  templateId?: string;
   [key: string]: any;
 }
 
@@ -39,7 +40,7 @@ export async function sendEmail(data: EmailData): Promise<any> {
   // Send email using EmailJS
   return emailjs.send(
     SERVICE_ID,
-    TEMPLATE_ID,
+    data.templateId || DEFAULT_TEMPLATE_ID,
     templateParams,
     PUBLIC_KEY
   );

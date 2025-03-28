@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -185,7 +184,7 @@ const Teachers = () => {
                     Fill out the form below to start your application process.
                   </DialogDescription>
                 </DialogHeader>
-                <BookingForm />
+                <BookingForm isTeacherForm={true} />
               </DialogContent>
             </Dialog>
           </div>
