@@ -30,6 +30,7 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
   const [userInput, setUserInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [conversationId, setConversationId] = useState<string | null>(null);
+  const apiUrl = "http://3.27.231.20:8000/chat";
 
   // Scroll to bottom of chat when new messages appear
   useEffect(() => {
@@ -59,66 +60,84 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
     setIsLoading(true);
     
     try {
-      console.log("Sending request to API:", {
+      // Prepare request payload
+      const payload = {
         query: userMessage.content,
         conversation_id: conversationId
-      });
+      };
       
-      // Send message to API - using absolute URL with protocol
-      const response = await fetch("http://3.27.231.20:8000/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-          "Origin": window.location.origin
-        },
-        mode: "cors", // Explicitly set CORS mode
-        body: JSON.stringify({
-          query: userMessage.content,
-          conversation_id: conversationId
-        })
-      });
+      console.log("Sending request to API:", payload);
+      console.log("API URL:", apiUrl);
+
+      // Use XMLHttpRequest instead of fetch for better CORS compatibility
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", apiUrl, true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.setRequestHeader("Accept", "application/json");
+      xhr.setRequestHeader("Origin", window.location.origin);
       
-      console.log("API response status:", response.status);
+      xhr.onload = function() {
+        console.log("Response status:", xhr.status);
+        console.log("Response headers:", xhr.getAllResponseHeaders());
+        
+        if (xhr.status >= 200 && xhr.status < 300) {
+          try {
+            const data = JSON.parse(xhr.responseText);
+            console.log("API response data:", data);
+            
+            // Store conversation ID if it's the first message
+            if (!conversationId && data.conversation_id) {
+              setConversationId(data.conversation_id);
+              console.log("Set conversation ID:", data.conversation_id);
+            }
+            
+            // Add bot response to chat
+            setMessages(prev => [...prev, {
+              content: data.response || "I'm sorry, I couldn't process that request.",
+              isUser: false,
+              timestamp: new Date()
+            }]);
+          } catch (parseError) {
+            console.error("Error parsing response:", parseError);
+            handleError("Failed to parse the API response");
+          }
+        } else {
+          console.error("API error response status:", xhr.status);
+          console.error("API error response text:", xhr.responseText);
+          handleError(`API responded with error: ${xhr.status}`);
+        }
+        
+        setIsLoading(false);
+      };
       
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error("API error response:", errorText);
-        throw new Error(`Failed to get response from AI (Status: ${response.status})`);
-      }
+      xhr.onerror = function() {
+        console.error("Network error occurred");
+        handleError("Network error occurred while connecting to the API");
+        setIsLoading(false);
+      };
       
-      const data = await response.json();
-      console.log("API response data:", data);
+      xhr.send(JSON.stringify(payload));
       
-      // Store conversation ID if it's the first message
-      if (!conversationId && data.conversation_id) {
-        setConversationId(data.conversation_id);
-        console.log("Set conversation ID:", data.conversation_id);
-      }
-      
-      // Add bot response to chat
-      setMessages(prev => [...prev, {
-        content: data.response || "I'm sorry, I couldn't process that request.",
-        isUser: false,
-        timestamp: new Date()
-      }]);
     } catch (error) {
       console.error("Chat API error:", error);
-      
-      // Add error message to chat
-      setMessages(prev => [...prev, {
-        content: "Sorry, I'm having trouble connecting right now. Please try again later.",
-        isUser: false,
-        timestamp: new Date()
-      }]);
-      
-      toast({
-        title: "Connection Error",
-        description: "Failed to connect to the AI service. Please check the console for details.",
-      });
-    } finally {
+      handleError("An unexpected error occurred");
       setIsLoading(false);
     }
+  };
+  
+  const handleError = (errorMessage: string) => {
+    // Add error message to chat
+    setMessages(prev => [...prev, {
+      content: "Sorry, I'm having trouble connecting right now. Please try again later.",
+      isUser: false,
+      timestamp: new Date()
+    }]);
+    
+    toast({
+      title: "Connection Error",
+      description: errorMessage,
+      variant: "destructive"
+    });
   };
 
   // Add click outside to close functionality
