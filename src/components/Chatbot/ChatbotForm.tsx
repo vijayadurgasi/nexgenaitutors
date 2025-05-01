@@ -59,11 +59,18 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
     setIsLoading(true);
     
     try {
+      console.log("Sending request to API:", {
+        query: userMessage.content,
+        conversation_id: conversationId
+      });
+      
       // Send message to API
       const response = await fetch("http://3.27.231.20:8000/chat", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          "Origin": window.location.origin
         },
         body: JSON.stringify({
           query: userMessage.content,
@@ -71,15 +78,21 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
         })
       });
       
+      console.log("API response status:", response.status);
+      
       if (!response.ok) {
-        throw new Error("Failed to get response from AI");
+        const errorText = await response.text();
+        console.error("API error response:", errorText);
+        throw new Error(`Failed to get response from AI (Status: ${response.status})`);
       }
       
       const data = await response.json();
+      console.log("API response data:", data);
       
       // Store conversation ID if it's the first message
       if (!conversationId && data.conversation_id) {
         setConversationId(data.conversation_id);
+        console.log("Set conversation ID:", data.conversation_id);
       }
       
       // Add bot response to chat
@@ -100,7 +113,7 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
       
       toast({
         title: "Connection Error",
-        description: "Failed to connect to the AI service. Please try again later.",
+        description: "Failed to connect to the AI service. Please check the console for details.",
       });
     } finally {
       setIsLoading(false);
