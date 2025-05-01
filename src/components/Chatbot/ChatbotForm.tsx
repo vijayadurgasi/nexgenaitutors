@@ -64,7 +64,7 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
         conversation_id: conversationId
       });
       
-      // Send message to API
+      // Send message to API - using absolute URL with protocol
       const response = await fetch("http://3.27.231.20:8000/chat", {
         method: "POST",
         headers: {
@@ -72,6 +72,7 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
           "Accept": "application/json",
           "Origin": window.location.origin
         },
+        mode: "cors", // Explicitly set CORS mode
         body: JSON.stringify({
           query: userMessage.content,
           conversation_id: conversationId
