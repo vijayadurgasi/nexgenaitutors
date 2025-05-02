@@ -30,19 +30,23 @@ const ChatbotButton = () => {
       <div className="fixed bottom-4 right-4 z-50">
         <Button 
           onClick={toggleChatbot} 
-          className="w-10 h-10 rounded-full bg-navy-600 hover:bg-navy-700 shadow-lg"
+          className="w-12 h-12 rounded-full bg-navy-600 hover:bg-navy-700 shadow-lg"
           size="icon"
         >
           {isOpen ? (
-            <X className="h-4 w-4" />
+            <X className="h-5 w-5" />
           ) : (
-            <MessageCircle className="h-4 w-4" />
+            <MessageCircle className="h-5 w-5" />
           )}
         </Button>
       </div>
 
       {isOpen && (
-        <div ref={chatbotRef} className="fixed bottom-16 right-4 z-50 w-[260px] max-h-[400px] bg-white rounded-lg shadow-xl overflow-hidden transition-all duration-300 ease-in-out">
+        <div 
+          ref={chatbotRef} 
+          className="fixed bottom-20 right-4 z-50 w-[320px] md:w-[380px] bg-white rounded-lg shadow-xl overflow-hidden transition-all duration-300 ease-in-out border border-gray-200"
+          style={{ maxHeight: 'calc(100vh - 120px)' }}
+        >
           <ChatbotForm onClose={() => setIsOpen(false)} />
         </div>
       )}

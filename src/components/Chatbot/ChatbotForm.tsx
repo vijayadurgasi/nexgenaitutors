@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,6 +19,7 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
   const { toast } = useToast();
   const formRef = useRef<HTMLDivElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       content: "Hi there! I'm NextGen AI Tutor. How can I assist you today?",
@@ -30,7 +30,7 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
   const [userInput, setUserInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [conversationId, setConversationId] = useState<string | null>(null);
-  const apiUrl = "https://api.nextgenaitutors.com/chat"; // Updated to secure HTTPS endpoint
+  const apiUrl = "https://api.nextgenaitutors.com/chat";
 
   // Scroll to bottom of chat when new messages appear
   useEffect(() => {
@@ -38,6 +38,13 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [messages]);
+
+  // Focus on the input field when the chatbot opens
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
   const sendChatMessage = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -156,7 +163,7 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
 
   return (
     <div className="flex flex-col h-[500px] max-h-[80vh]" ref={formRef}>
-      <div className="bg-navy-600 text-white p-2 flex justify-between items-center">
+      <div className="bg-navy-600 text-white p-3 flex justify-between items-center">
         <h3 className="text-sm font-medium">NextGen AI Tutors</h3>
         <Button variant="ghost" size="icon" onClick={onClose} className="text-white hover:bg-navy-700 h-6 w-6">
           <X className="h-3 w-3" />
@@ -198,18 +205,19 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
             )}
           </div>
           
-          <form onSubmit={sendChatMessage} className="p-3 border-t border-gray-200 flex items-center">
+          <form onSubmit={sendChatMessage} className="sticky bottom-0 p-3 border-t border-gray-200 flex items-center bg-white shadow-md">
             <Input
+              ref={inputRef}
               type="text"
               placeholder="Type your message..."
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
-              className="flex-grow mr-2"
+              className="flex-grow mr-2 bg-gray-50 border-navy-200 focus:border-navy-400 focus:ring-2 focus:ring-navy-300"
               disabled={isLoading}
             />
             <Button 
               type="submit" 
-              className="bg-navy-600 hover:bg-navy-700 px-3" 
+              className="bg-navy-600 hover:bg-navy-700 px-4 py-2" 
               disabled={isLoading || !userInput.trim()}
               size="icon"
             >
