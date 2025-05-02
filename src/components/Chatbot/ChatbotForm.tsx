@@ -30,7 +30,7 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
   const [userInput, setUserInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [conversationId, setConversationId] = useState<string | null>(null);
-  const apiUrl = "http://3.27.231.20:8000/chat";
+  const apiUrl = "http://54.79.128.143/chat"; // Updated API endpoint
 
   // Scroll to bottom of chat when new messages appear
   useEffect(() => {
