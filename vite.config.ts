@@ -1,20 +1,21 @@
 
-// Using CommonJS syntax for older Node.js versions
-const { defineConfig } = require("vite");
-const react = require("@vitejs/plugin-react-swc");
-const path = require("path");
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import path from "path";
 
 // Import the component tagger conditionally to avoid ES module syntax issues
 let componentTagger;
 try {
-  componentTagger = require("lovable-tagger").componentTagger;
+  // @ts-ignore - Dynamic import for compatibility
+  const lovableTagger = await import("lovable-tagger").catch(() => ({ componentTagger: null }));
+  componentTagger = lovableTagger.componentTagger;
 } catch (e) {
   // If the module cannot be loaded, provide a placeholder function
   componentTagger = () => null;
 }
 
 // https://vitejs.dev/config/
-module.exports = defineConfig(({ mode }) => ({
+export default defineConfig(({ mode }: { mode: string }) => ({
   server: {
     host: "::",
     port: 8080,
