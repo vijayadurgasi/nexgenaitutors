@@ -1,6 +1,7 @@
+'use client'
 
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -15,7 +16,7 @@ const HeroSection = () => {
               One-on-one sessions with experienced teachers tailored to your learning style
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/contact-us">
+              <Link href="/contact-us">
                 <Button size="lg" variant="outline" className="text-lg bg-transparent border-white text-white hover:bg-white/10 w-full sm:w-auto">
                   Book a Demo Today
                 </Button>

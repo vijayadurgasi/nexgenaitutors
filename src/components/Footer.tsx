@@ -1,5 +1,6 @@
+'use client'
 
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { GraduationCap } from "lucide-react";
 
 const Footer = () => {
@@ -39,20 +40,20 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Company</h3>
             <ul className="space-y-3">
-              <li><Link to="/about" className="text-gray-600 dark:text-gray-400 hover:text-navy-600 dark:hover:text-navy-400">About Us</Link></li>
-              <li><Link to="/careers" className="text-gray-600 dark:text-gray-400 hover:text-navy-600 dark:hover:text-navy-400">Careers</Link></li>
-              <li><Link to="/blog" className="text-gray-600 dark:text-gray-400 hover:text-navy-600 dark:hover:text-navy-400">Blog</Link></li>
-              <li><Link to="/press" className="text-gray-600 dark:text-gray-400 hover:text-navy-600 dark:hover:text-navy-400">Press</Link></li>
+              <li><Link href="/about" className="text-gray-600 dark:text-gray-400 hover:text-navy-600 dark:hover:text-navy-400">About Us</Link></li>
+              <li><Link href="/careers" className="text-gray-600 dark:text-gray-400 hover:text-navy-600 dark:hover:text-navy-400">Careers</Link></li>
+              <li><Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-navy-600 dark:hover:text-navy-400">Blog</Link></li>
+              <li><Link href="/press" className="text-gray-600 dark:text-gray-400 hover:text-navy-600 dark:hover:text-navy-400">Press</Link></li>
             </ul>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-4">Support</h3>
             <ul className="space-y-3">
-              <li><Link to="/contact" className="text-gray-600 dark:text-gray-400 hover:text-navy-600 dark:hover:text-navy-400">Contact Us</Link></li>
-              <li><Link to="/help" className="text-gray-600 dark:text-gray-400 hover:text-navy-600 dark:hover:text-navy-400">Help Center</Link></li>
-              <li><Link to="/faq" className="text-gray-600 dark:text-gray-400 hover:text-navy-600 dark:hover:text-navy-400">FAQ</Link></li>
-              <li><Link to="/privacy" className="text-gray-600 dark:text-gray-400 hover:text-navy-600 dark:hover:text-navy-400">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="text-gray-600 dark:text-gray-400 hover:text-navy-600 dark:hover:text-navy-400">Terms of Service</Link></li>
+              <li><Link href="/contact" className="text-gray-600 dark:text-gray-400 hover:text-navy-600 dark:hover:text-navy-400">Contact Us</Link></li>
+              <li><Link href="/help" className="text-gray-600 dark:text-gray-400 hover:text-navy-600 dark:hover:text-navy-400">Help Center</Link></li>
+              <li><Link href="/faq" className="text-gray-600 dark:text-gray-400 hover:text-navy-600 dark:hover:text-navy-400">FAQ</Link></li>
+              <li><Link href="/privacy" className="text-gray-600 dark:text-gray-400 hover:text-navy-600 dark:hover:text-navy-400">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="text-gray-600 dark:text-gray-400 hover:text-navy-600 dark:hover:text-navy-400">Terms of Service</Link></li>
             </ul>
           </div>
           <div>
