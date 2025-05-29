@@ -11,7 +11,7 @@ export default function SubjectsPage() {
         <h1 className="text-4xl font-bold mb-4">Our Subjects</h1>
         <p className="text-lg max-w-3xl mx-auto">
           Explore our wide range of subjects taught by expert tutors using our advanced AI platform.
-          Choose the subject you're interested in to learn more about our approach and offerings.
+          Choose the subject you&apos;re interested in to learn more about our approach and offerings.
         </p>
       </div>
       

@@ -1,18 +1,7 @@
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { Card, CardContent } from "@/components/ui/card";
+import BookingForm from "@/components/BookingForm";
 import { Button } from "@/components/ui/button";
-import { 
-  BookOpen, 
-  MessageSquare, 
-  PenTool, 
-  Headphones, 
-  Globe, 
-  BookText,
-  Type,
-  Lightbulb
-} from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -21,7 +10,16 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import BookingForm from "@/components/BookingForm";
+import {
+  BookOpen,
+  BookText,
+  Globe,
+  Headphones,
+  Lightbulb,
+  MessageSquare,
+  PenTool,
+  Type
+} from "lucide-react";
 
 const LanguagesPage = () => {
   return (
@@ -167,7 +165,7 @@ const LanguagesPage = () => {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-navy-800 mb-4">Our Language Learning Approach</h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                We develop language skills through our proven methodology that adapts to each student's needs.
+                We develop language skills through our proven methodology that adapts to each student&apos;s needs.
               </p>
             </div>
 

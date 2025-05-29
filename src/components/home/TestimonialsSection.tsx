@@ -92,7 +92,7 @@ const TestimonialCard = ({
             </div>
           </div>
         </div>
-        <p className="text-gray-600 dark:text-gray-400 flex-grow italic">"{content}"</p>
+        <p className="text-gray-600 dark:text-gray-400 flex-grow italic">&quot;{content}&quot;</p>
       </CardContent>
     </Card>
   );

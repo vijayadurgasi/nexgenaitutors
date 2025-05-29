@@ -2,7 +2,6 @@ import React from 'react';
 import { getSubjectBySlug } from '@/lib/subjects';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import BookingForm from '@/components/BookingForm';
@@ -11,12 +10,14 @@ interface Params {
   params: Promise<{
     slugs: string;
   }>;
-  searchParams: Record<string, string | string[]>;
+  searchParams: Promise<Record<string, string | string[]>>;
 }
 
-export default async function SubjectPage({ params }: Params) {
+export default async function SubjectPage({ params, searchParams }: Params) {
   // Await the params since they're now promises in Next.js 15+
   const resolvedParams = await params;
+  // Await searchParams even if not used in this component
+  await searchParams;
   const slug = resolvedParams.slugs;
   
   const subjectData = getSubjectBySlug(slug);
@@ -70,7 +71,7 @@ export default async function SubjectPage({ params }: Params) {
         {/* Content Sections */}
         <div className="container mx-auto py-16 px-4">
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-navy-800 mb-6">What You'll Learn</h2>
+            <h2 className="text-3xl font-bold text-navy-800 mb-6">What You&apos;ll Learn</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {subjectData.learningPoints.map((point, index) => (
                 <div key={index} className="bg-white p-6 rounded-lg shadow-md border border-gray-100">

@@ -1,6 +1,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Brain, Users, Clock, BookOpen } from "lucide-react";
+import Image from "next/image";
 
 const FeaturesSection = () => {
   return (
@@ -60,7 +61,9 @@ const FeatureCard = ({
   return (
     <Card className="group overflow-hidden transition-all duration-300 hover:shadow-xl border-t-4 border-t-navy-600">
       <div className="h-40 overflow-hidden">
-        <img 
+        <Image
+          width={600}
+          height={400} 
           src={image} 
           alt={title} 
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"

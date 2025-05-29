@@ -14,7 +14,7 @@ const AboutUs = () => {
               <div className="md:w-1/2">
                 <h1 className="text-4xl md:text-5xl font-bold mb-6 text-navy-800">About NextGen AI Tutors</h1>
                 <p className="text-lg text-gray-600 mb-8">
-                  We're revolutionizing education by combining expert teaching with cutting-edge AI technology to provide personalized learning experiences for students of all ages and backgrounds.
+                  We&apos;re revolutionizing education by combining expert teaching with cutting-edge AI technology to provide personalized learning experiences for students of all ages and backgrounds.
                 </p>
                 <Link href="/contact-us">
                   <Button className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900 px-8 py-6 text-lg">
@@ -43,7 +43,7 @@ const AboutUs = () => {
               Founded in 2022 by a team of educators, technology experts, and learning scientists, NextGen AI Tutors was born from a simple observation: traditional education often fails to meet the individual needs of each student.
             </p>
             <p className="text-lg text-gray-600">
-              We set out to create a learning platform that could adapt to each student's unique learning style, pace, and interests while providing the human touch and expertise that only comes from experienced educators. By combining advanced AI technology with proven teaching methods, we've created a revolutionary approach to education that's helping thousands of students reach their full potential.
+              We set out to create a learning platform that could adapt to each student&apos;s unique learning style, pace, and interests while providing the human touch and expertise that only comes from experienced educators. By combining advanced AI technology with proven teaching methods, we&apos;ve created a revolutionary approach to education that&apos;s helping thousands of students reach their full potential.
             </p>
           </div>
 
@@ -63,7 +63,7 @@ const AboutUs = () => {
               <ul className="space-y-3 text-gray-600">
                 <li className="flex items-start">
                   <span className="text-navy-600 font-bold mr-2">•</span>
-                  <span><strong className="text-navy-700">Personalization:</strong> We adapt to each student's unique needs and learning style.</span>
+                  <span><strong className="text-navy-700">Personalization:</strong> We adapt to each student&apos;s unique needs and learning style.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-navy-600 font-bold mr-2">•</span>

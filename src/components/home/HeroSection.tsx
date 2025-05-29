@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
 
 const HeroSection = () => {
@@ -23,7 +24,9 @@ const HeroSection = () => {
           </div>
           <div className="relative flex justify-center md:justify-end">
             <div className="relative">
-              <img
+              <Image
+                width={600}
+                height={400}
                 src="https://images.unsplash.com/photo-1610484826967-09c5720778c7"
                 alt="Kid learning online"
                 className="rounded-lg shadow-xl w-full object-cover h-[400px] border-4 border-white/30"
@@ -33,7 +36,9 @@ const HeroSection = () => {
                 <p className="text-sm">of students improved their grades within 3 months</p>
               </div>
             </div>
-            <img
+            <Image
+              width={100}
+              height={100}
               src="https://images.unsplash.com/photo-1599687351724-dfa3c4ff81b1"
               alt="Student with VR headset"
               className="absolute -top-4 -left-4 w-36 h-36 rounded-full border-4 border-white/30 shadow-lg hidden md:block object-cover"

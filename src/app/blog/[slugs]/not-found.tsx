@@ -10,7 +10,7 @@ export default function BlogNotFound() {
         </h1>
         <div className="w-24 h-1 bg-navy-600 mx-auto mb-8"></div>
         <p className="text-xl text-gray-600 dark:text-gray-400 mb-10">
-          We couldn't find the blog post you were looking for. The article may have been moved, renamed, or is no longer available.
+          We couldn&apos;t find the blog post you were looking for. The article may have been moved, renamed, or is no longer available.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button

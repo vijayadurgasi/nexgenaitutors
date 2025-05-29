@@ -17,10 +17,10 @@ export default function OfflinePage() {
           />
         </div>
         
-        <h1 className="text-3xl font-bold mb-4 text-navy-600">You're Offline</h1>
+        <h1 className="text-3xl font-bold mb-4 text-navy-600">You&apos;re Offline</h1>
         
         <p className="mb-8 text-gray-600">
-          It seems you've lost your internet connection. Some features may be unavailable until you're back online.
+          It seems you&apos;ve lost your internet connection. Some features may be unavailable until you&apos;re back online.
         </p>
         
         <div className="space-y-4">
@@ -43,7 +43,7 @@ export default function OfflinePage() {
         </div>
         
         <p className="mt-8 text-sm text-gray-500">
-          Some previously visited pages may still be available while you're offline.
+          Some previously visited pages may still be available while you&apos;re offline.
         </p>
       </div>
     </div>

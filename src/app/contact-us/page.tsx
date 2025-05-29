@@ -87,7 +87,7 @@ const ContactUs = () => {
           <div className="container mx-auto text-center px-4">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-navy-800">Contact Us</h1>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
-              Have questions about our tutoring services? Want to learn more about how we can help you or your child succeed? We'd love to hear from you!
+              Have questions about our tutoring services? Want to learn more about how we can help you or your child succeed? We&apos;d love to hear from you!
             </p>
           </div>
         </div>

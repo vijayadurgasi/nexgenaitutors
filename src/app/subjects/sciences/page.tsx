@@ -1,9 +1,7 @@
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { Card, CardContent } from "@/components/ui/card";
+import BookingForm from "@/components/BookingForm";
 import { Button } from "@/components/ui/button";
-import { Microscope, Atom, Beaker, Dna, Brain, Rocket, Leaf, Globe } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -12,7 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import BookingForm from "@/components/BookingForm";
+import { Atom, Beaker, Brain, Dna, Globe, Leaf, Microscope, Rocket } from "lucide-react";
 
 const SciencesPage = () => {
   return (

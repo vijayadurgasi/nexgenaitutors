@@ -14,12 +14,14 @@ interface Params {
   params: Promise<{
     slugs: string;
   }>;
-  searchParams: Record<string, string | string[]>;
+  searchParams: Promise<Record<string, string | string[]>>;
 }
 
-export default async function BlogPostPage({ params }: Params) {
+export default async function BlogPostPage({ params, searchParams }: Params) {
   // Await the params since they're now promises in Next.js 15+
   const resolvedParams = await params;
+  // Await searchParams even if not used in this component
+  await searchParams;
   const slug = resolvedParams.slugs as string;
   
   const post = blogPosts.find((post) => post.slug === slug);
