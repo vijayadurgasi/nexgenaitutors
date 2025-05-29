@@ -1,7 +1,6 @@
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Microscope, Atom, Beaker, Dna, Brain, Rocket, Leaf, Globe } from "lucide-react";
@@ -18,7 +17,6 @@ import BookingForm from "@/components/BookingForm";
 const SciencesPage = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
       <main className="flex-grow">
         <div className="bg-gradient-to-b from-navy-50 to-white py-20">
           <div className="container mx-auto text-center">
@@ -122,7 +120,6 @@ const SciencesPage = () => {
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   );
 };

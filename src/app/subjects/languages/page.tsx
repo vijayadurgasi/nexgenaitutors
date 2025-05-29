@@ -26,7 +26,6 @@ import BookingForm from "@/components/BookingForm";
 const LanguagesPage = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
       <main className="flex-grow">
         <div className="bg-gradient-to-b from-navy-50 to-white py-20">
           <div className="container mx-auto text-center">
@@ -216,7 +215,6 @@ const LanguagesPage = () => {
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   );
 };

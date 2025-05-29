@@ -1,13 +1,11 @@
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import Image from "next/image";
+import Link from "next/link";
 
 const AboutUs = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
       <main className="flex-grow">
         {/* Hero Section */}
         <div className="bg-gradient-to-b from-navy-50 to-white py-20">
@@ -18,17 +16,19 @@ const AboutUs = () => {
                 <p className="text-lg text-gray-600 mb-8">
                   We're revolutionizing education by combining expert teaching with cutting-edge AI technology to provide personalized learning experiences for students of all ages and backgrounds.
                 </p>
-                <Link to="/contact-us">
+                <Link href="/contact-us">
                   <Button className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900 px-8 py-6 text-lg">
                     Get in Touch
                   </Button>
                 </Link>
               </div>
               <div className="md:w-1/2">
-                <img 
+                <Image 
                   src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000&auto=format&fit=crop"
                   alt="Team working together" 
                   className="rounded-xl shadow-lg w-full"
+                  width={1000}
+                  height={600}
                 />
               </div>
             </div>
@@ -87,7 +87,7 @@ const AboutUs = () => {
             <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
               Experience the future of education with personalized AI tutoring that adapts to your unique learning style and needs.
             </p>
-            <Link to="/subjects">
+            <Link href="/subjects">
               <Button className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900 px-8 py-6 text-lg">
                 Explore Our Subjects
               </Button>
@@ -95,7 +95,6 @@ const AboutUs = () => {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };

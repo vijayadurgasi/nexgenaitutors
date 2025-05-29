@@ -5,11 +5,25 @@ export function registerServiceWorker() {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/service-worker.js')
         .then(registration => {
-          console.log('SW registered: ', registration);
+          console.log('Service Worker registered successfully:', registration.scope);
+          
+          // Check for updates periodically
+          setInterval(() => {
+            registration.update();
+          }, 1000 * 60 * 60); // Check every hour
         })
-        .catch(registrationError => {
-          console.log('SW registration failed: ', registrationError);
+        .catch(error => {
+          console.error('Service Worker registration failed:', error);
         });
+    });
+    
+    // Listen for offline/online status changes
+    window.addEventListener('online', () => {
+      document.documentElement.classList.remove('offline');
+    });
+    
+    window.addEventListener('offline', () => {
+      document.documentElement.classList.add('offline');
     });
   }
 }

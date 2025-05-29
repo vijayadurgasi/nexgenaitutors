@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   applicationName: "NextGen AI Tutors",
-  themeColor: "#1a365d",
   openGraph: {
     type: "website",
     url: "https://yourdomain.com/",

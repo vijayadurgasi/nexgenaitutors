@@ -1,22 +1,19 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import BookingForm from "@/components/BookingForm";
-import { Pencil, BookOpen, GraduationCap, Award, Clock, Users } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
+import { Award, BookOpen, Clock, GraduationCap, Pencil, Users } from "lucide-react";
 
 const Teachers = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
       <main className="flex-grow">
         {/* Hero Section */}
         <div className="bg-gradient-to-b from-navy-50 to-white py-20">
@@ -190,7 +187,6 @@ const Teachers = () => {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };
