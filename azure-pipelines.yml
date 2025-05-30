@@ -1,19 +1,56 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+trigger: none
 
-trigger:
-- main
+variables:
+  - group: AWS_CREDENTIALS
 
-pool:
-  vmImage: ubuntu-latest
+stages:
+  - stage: Build
+    displayName: Build React + Next.js App
+    jobs:
+      - job: Build
+        displayName: Build Job
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '18.x'  # Use the Node version compatible with your project
+            displayName: 'Install Node.js'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+          - script: |
+              npm install
+              npm run build
+            displayName: 'Install Dependencies and Build'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+          - task: CopyFiles@2
+            inputs:
+              SourceFolder: 'out'  # Ensure you're using `next export` for static build
+              Contents: '**'
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+            displayName: 'Copy Build Output'
+
+          - publish: '$(Build.ArtifactStagingDirectory)'
+            artifact: 'drop'
+            displayName: 'Publish Artifact'
+
+  - stage: Deploy
+    displayName: Deploy to AWS S3
+    dependsOn: Build
+    jobs:
+      - job: Deploy
+        displayName: Deploy Job
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - download: current
+            artifact: drop
+
+          - task: AWSShellScript@1
+            name: DeployToS3
+            displayName: 'Sync to S3 Bucket'
+            inputs:
+              awsCredentials: 'AWS_CREDENTIALS'   # This should match the name of your variable group
+              regionName: 'ap-southeast-2'
+              scriptType: 'inline'
+              inlineScript: |
+                aws s3 sync $(Pipeline.Workspace)/drop s3://nextgenaitutors.com.au --delete
