@@ -1,21 +1,26 @@
 
-// Service Worker for NextGen AI Tutors
+// Service Worker for NextGen AI Tutors (Next.js version)
 const CACHE_NAME = 'nextgen-ai-tutors-v1';
-const urlsToCache = [
+
+// Assets to cache on install
+const staticAssets = [
   '/',
-  '/index.html',
-  '/manifest.json',
+  '/offline',
   '/favicon.ico',
-  '/assets/index.css',
-  '/assets/index.js',
+  '/manifest.json',
+  '/robots.txt',
+  '/placeholder.svg',
+  '/og-image.png'
 ];
 
-// Install event - caches static assets
+// Install event - cache static assets
 self.addEventListener('install', event => {
+  self.skipWaiting(); // Force activation on all clients
+  
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        return cache.addAll(urlsToCache);
+        return cache.addAll(staticAssets);
       })
   );
 });
@@ -32,46 +37,119 @@ self.addEventListener('activate', event => {
           }
         })
       );
+    }).then(() => {
+      // Claim clients to ensure updates are applied immediately
+      return self.clients.claim();
     })
   );
 });
 
-// Fetch event - serve from cache first, then network
+// Helper function to determine if a request is an asset that should be cached
+const shouldCache = (url) => {
+  // Cache static assets like images, fonts, css, js
+  const assetExtensions = [
+    '.css', '.js', '.jpg', '.jpeg', '.png', '.webp', 
+    '.svg', '.woff', '.woff2', '.ttf', '.eot', '.ico'
+  ];
+  
+  return assetExtensions.some(ext => url.pathname.endsWith(ext)) ||
+         url.pathname.startsWith('/_next/static/') ||
+         url.pathname.startsWith('/_next/image/') ||
+         staticAssets.includes(url.pathname);
+};
+
+// Fetch event - network-first for HTML/JSON, cache-first for assets
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Cache hit - return response
-        if (response) {
+  const url = new URL(event.request.url);
+  
+  // Skip non-GET requests and requests to other domains
+  if (event.request.method !== 'GET' || 
+      !url.origin.includes(self.location.origin)) {
+    return;
+  }
+  
+  // Skip analytics, APIs or other dynamic requests
+  if (url.pathname.includes('/api/') || 
+      url.pathname.includes('analytics') ||
+      url.pathname.includes('socket')) {
+    return;
+  }
+  
+  // For page requests (HTML): network-first strategy
+  if (event.request.mode === 'navigate' || 
+      event.request.headers.get('accept')?.includes('text/html')) {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
           return response;
-        }
-        return fetch(event.request).then(
-          response => {
-            // Check if we received a valid response
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
-
-            // Clone the response as it's going to be consumed by the browser and the cache
-            const responseToCache = response.clone();
-
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                // Don't cache API calls or other dynamic content
-                if (!event.request.url.includes('/api/')) {
-                  cache.put(event.request, responseToCache);
-                }
+        })
+        .catch(() => {
+          // If network fails, try to serve from cache
+          return caches.match(event.request)
+            .then(cachedResponse => {
+              if (cachedResponse) {
+                return cachedResponse;
+              }
+              // If no cached version exists, return the offline page
+              return caches.match('/');
+            });
+        })
+    );
+    return;
+  }
+  
+  // For static assets: cache-first strategy
+  if (shouldCache(url)) {
+    event.respondWith(
+      caches.match(event.request)
+        .then(cachedResponse => {
+          if (cachedResponse) {
+            // Return cached response and fetch update in background
+            const fetchPromise = fetch(event.request)
+              .then(networkResponse => {
+                // Update cache with fresh version
+                const responseToCache = networkResponse.clone();
+                caches.open(CACHE_NAME)
+                  .then(cache => {
+                    cache.put(event.request, responseToCache);
+                  });
+                return networkResponse;
+              })
+              .catch(() => {
+                // Network error, fallback to cached version
+                return cachedResponse;
               });
-
-            return response;
+              
+            return cachedResponse;
           }
-        );
-      })
+          
+          // No cache match, get from network and cache
+          return fetch(event.request)
+            .then(response => {
+              // Check if we received a valid response
+              if (!response || response.status !== 200) {
+                return response;
+              }
+              
+              // Clone the response
+              const responseToCache = response.clone();
+              caches.open(CACHE_NAME)
+                .then(cache => {
+                  cache.put(event.request, responseToCache);
+                });
+              
+              return response;
+            });
+        })
+    );
+    return;
+  }
+  
+  // Default fetch strategy for other requests
+  event.respondWith(
+    fetch(event.request)
       .catch(() => {
-        // If both cache and network fail, return the offline page for navigation requests
-        if (event.request.mode === 'navigate') {
-          return caches.match('/index.html');
-        }
+        return caches.match(event.request);
       })
   );
 });

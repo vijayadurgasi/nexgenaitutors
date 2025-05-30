@@ -17,10 +17,15 @@ interface EmailData {
   preferredTime?: string;
   defaultMessage?: string;
   templateId?: string;
-  [key: string]: any;
+  [key: string]: string | undefined;
 }
 
-export async function sendEmail(data: EmailData): Promise<any> {
+interface EmailJSResponse {
+  status: number;
+  text: string;
+}
+
+export async function sendEmail(data: EmailData): Promise<EmailJSResponse> {
   // Prepare email template parameters
   // Note: These fields exactly match what's expected in the HTML template
   const templateParams = {

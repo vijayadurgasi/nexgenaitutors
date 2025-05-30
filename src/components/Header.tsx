@@ -1,6 +1,7 @@
+'use client'
 
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -27,7 +28,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-lg bg-white/75 dark:bg-gray-900/75 border-b border-gray-200 dark:border-gray-800">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2">
+        <Link href="/" className="flex items-center space-x-2">
           <GraduationCap className="h-8 w-8 text-navy-600" />
           <span className="text-2xl font-bold bg-gradient-to-r from-navy-600 to-navy-800 bg-clip-text text-transparent">
             NextGen AI Tutors
@@ -40,7 +41,7 @@ const Header = () => {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link
-                    to="/"
+                    href="/"
                     className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
                   >
                     Home
@@ -66,7 +67,7 @@ const Header = () => {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link
-                    to="/teachers"
+                    href="/teachers"
                     className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
                   >
                     Teachers
@@ -76,7 +77,7 @@ const Header = () => {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link
-                    to="/blog"
+                    href="/blog"
                     className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
                   >
                     Blog
@@ -86,7 +87,7 @@ const Header = () => {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link
-                    to="/about-us"
+                    href="/about-us"
                     className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
                   >
                     About Us
@@ -96,7 +97,7 @@ const Header = () => {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link
-                    to="/contact-us"
+                    href="/contact-us"
                     className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
                   >
                     Contact Us
@@ -106,7 +107,7 @@ const Header = () => {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link
-                    to="/packages"
+                    href="/packages"
                     className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
                   >
                     Packages
@@ -149,43 +150,43 @@ const Header = () => {
                 </DrawerHeader>
                 <div className="px-4 py-2 flex flex-col space-y-4">
                   <Link 
-                    to="/" 
+                    href="/" 
                     className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
                     Home
                   </Link>
                   <Link 
-                    to="/subjects/mathematics" 
+                    href="/subjects/mathematics" 
                     className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
                     Subjects
                   </Link>
                   <Link 
-                    to="/teachers" 
+                    href="/teachers" 
                     className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
                     Teachers
                   </Link>
                   <Link 
-                    to="/blog" 
+                    href="/blog" 
                     className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
                     Blog
                   </Link>
                   <Link 
-                    to="/about-us" 
+                    href="/about-us" 
                     className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
                     About Us
                   </Link>
                   <Link 
-                    to="/contact-us" 
+                    href="/contact-us" 
                     className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
                     Contact Us
                   </Link>
                   <Link 
-                    to="/packages" 
+                    href="/packages" 
                     className="text-lg font-medium hover:text-navy-600 transition-colors"
                   >
                     Packages

@@ -1,11 +1,14 @@
 
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const CtaSection = () => {
   return (
     <section className="bg-gradient-to-r from-navy-700 to-navy-900 text-white py-16 relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
-        <img
+        <Image
+          width={1920}
+          height={1080}
           src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
           alt="Background"
           className="w-full h-full object-cover"
