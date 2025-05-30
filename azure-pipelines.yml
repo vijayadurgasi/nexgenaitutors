@@ -20,7 +20,11 @@ stages:
           - script: |
               npm install --legacy-peer-deps
               npm run build
-            displayName: 'Install Dependencies, Build, and Export'
+              npm run export
+              echo "Current Dir: $(pwd)"
+              ls -la
+              ls -la out
+            displayName: 'Install Dependencies, Build, Export, and List Files'
 
           - task: CopyFiles@2
             inputs:
