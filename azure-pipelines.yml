@@ -22,12 +22,12 @@ stages:
               npm run build
               echo "Current Dir: $(pwd)"
               ls -la
-              ls -la .next/out
+              ls -la out
             displayName: 'Install Dependencies, Build, and List Exported Files'
 
           - task: CopyFiles@2
             inputs:
-              SourceFolder: '.next/out'    # Changed from 'out' to '.next/export'
+              SourceFolder: 'out'    # Changed from 'out' to '.next/export'
               Contents: '**'
               TargetFolder: '$(Build.ArtifactStagingDirectory)'
             displayName: 'Copy Build Output'
