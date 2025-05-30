@@ -14,21 +14,20 @@ stages:
         steps:
           - task: NodeTool@0
             inputs:
-              versionSpec: '18.x'  # Use the Node version compatible with your project
+              versionSpec: '18.x'
             displayName: 'Install Node.js'
 
           - script: |
               npm install --legacy-peer-deps
               npm run build
-              npm run export
               echo "Current Dir: $(pwd)"
               ls -la
-              ls -la out
-            displayName: 'Install Dependencies, Build, Export, and List Files'
+              ls -la .next/export
+            displayName: 'Install Dependencies, Build, and List Exported Files'
 
           - task: CopyFiles@2
             inputs:
-              SourceFolder: 'out'  # Ensure you're using `next export` for static build
+              SourceFolder: '.next/export'    # Changed from 'out' to '.next/export'
               Contents: '**'
               TargetFolder: '$(Build.ArtifactStagingDirectory)'
             displayName: 'Copy Build Output'
@@ -49,10 +48,10 @@ stages:
           - download: current
             artifact: drop
 
-          - task: AWSCLI@1
-            displayName: 'Sync to S3 Bucket'
-            inputs:
-              awsCredentials: 'AWS_CREDENTIALS'
-              regionName: 'ap-southeast-2'
-              command: 's3'
-              arguments: 'sync $(Pipeline.Workspace)/drop s3://nextgenaitutors.com.au --delete'
+          - script: |
+              aws s3 sync $(Pipeline.Workspace)/drop s3://nextgenaitutors.com.au --delete
+            env:
+              AWS_ACCESS_KEY_ID: $(awsAccessKeyId)
+              AWS_SECRET_ACCESS_KEY: $(awsSecretAccessKey)
+              AWS_DEFAULT_REGION: 'ap-southeast-2'
+            displayName: 'Sync files to S3 bucket'
