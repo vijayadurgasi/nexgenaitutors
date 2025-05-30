@@ -1,10 +1,16 @@
 import React from 'react';
-import { getSubjectBySlug } from '@/lib/subjects';
+import { getSubjectBySlug, subjects } from '@/lib/subjects';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import BookingForm from '@/components/BookingForm';
+
+export async function generateStaticParams() {
+  return subjects.map((sub) => ({
+    slugs: sub.slug,
+  }));
+}
 
 interface Params {
   params: Promise<{
@@ -13,11 +19,11 @@ interface Params {
   searchParams: Promise<Record<string, string | string[]>>;
 }
 
-export default async function SubjectPage({ params, searchParams }: Params) {
+export default async function SubjectPage({ params }: Params) {
   // Await the params since they're now promises in Next.js 15+
   const resolvedParams = await params;
   // Await searchParams even if not used in this component
-  await searchParams;
+  // await searchParams;
   const slug = resolvedParams.slugs;
   
   const subjectData = getSubjectBySlug(slug);
