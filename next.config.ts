@@ -1,8 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export", // ✅ This enables static export output to /out
-
+  output: "export",
   images: {
     remotePatterns: [
       {
@@ -16,15 +15,15 @@ const nextConfig: NextConfig = {
   headers: async () => {
     return [
       {
-        source: '/service-worker.js',
+        source: "/service-worker.js",
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'public, max-age=0, must-revalidate',
+            key: "Cache-Control",
+            value: "public, max-age=0, must-revalidate",
           },
           {
-            key: 'Service-Worker-Allowed',
-            value: '/',
+            key: "Service-Worker-Allowed",
+            value: "/",
           },
         ],
       },
