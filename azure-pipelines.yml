@@ -45,12 +45,10 @@ stages:
           - download: current
             artifact: drop
 
-          - task: AWSShellScript@1
-            name: DeployToS3
+          - task: AWSCLI@1
             displayName: 'Sync to S3 Bucket'
             inputs:
-              awsCredentials: 'AWS_CREDENTIALS'   # This should match the name of your variable group
+              awsCredentials: 'AWS_CREDENTIALS'
               regionName: 'ap-southeast-2'
-              scriptType: 'inline'
-              inlineScript: |
-                aws s3 sync $(Pipeline.Workspace)/drop s3://nextgenaitutors.com.au --delete
+              command: 's3'
+              arguments: 'sync $(Pipeline.Workspace)/drop s3://nextgenaitutors.com.au --delete'
