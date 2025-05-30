@@ -20,7 +20,6 @@ stages:
           - script: |
               npm install --legacy-peer-deps
               npm run build
-              npm run export
             displayName: 'Install Dependencies, Build, and Export'
 
           - task: CopyFiles@2
