@@ -21,12 +21,13 @@ import {
   DrawerTrigger,
   DrawerClose,
 } from "@/components/ui/drawer";
+import ModeToggle from "@/components/mode-toggle";
 
 const Header = () => {
   const isMobile = useIsMobile();
 
   return (
-    <header className="sticky top-0 z-50 w-full backdrop-blur-lg bg-white/75 dark:bg-gray-900/75 border-b border-gray-200 dark:border-gray-800">
+    <header className="sticky top-0 z-50 w-full bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
           <GraduationCap className="h-8 w-8 text-navy-600" />
@@ -121,6 +122,7 @@ const Header = () => {
         <div className="flex items-center space-x-4">
           {!isMobile ? (
             <>
+              <ModeToggle />
               <Button 
                 variant="ghost" 
                 className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900"
