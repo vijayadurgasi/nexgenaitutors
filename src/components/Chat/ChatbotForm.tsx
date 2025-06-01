@@ -215,7 +215,7 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
                   className={`inline-block max-w-[85%] px-4 py-2.5 rounded-2xl ${
                     msg.isUser 
                       ? 'bg-navy-600 text-white rounded-br-none' 
-                      : 'bg-gray-100 dark:bg-navy-300 text-navy-950 rounded-bl-none'
+                      : 'bg-navy-200 dark:bg-white text-navy-950 rounded-bl-none'
                   }`}
                 >
                   <p className="whitespace-pre-wrap break-words">{msg.content}</p>

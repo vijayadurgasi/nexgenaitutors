@@ -13,7 +13,6 @@ import {
 import { cn } from "@/lib/utils";
 import React from "react";
 import { GraduationCap, Menu, X } from "lucide-react";
-import { useIsMobile } from "@/hooks/use-mobile";
 import {
   Drawer,
   DrawerContent,
@@ -24,9 +23,10 @@ import {
   DrawerDescription,
 } from "@/components/ui/drawer";
 import ModeToggle from "@/components/mode-toggle";
+import { useIsLarge } from "@/hooks/use-large";
 
 const Header = () => {
-  const isMobile = useIsMobile();
+  const isLarge = useIsLarge();
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white dark:bg-background border-b border-gray-200 dark:border-gray-800">
@@ -38,7 +38,7 @@ const Header = () => {
           </span>
         </Link>
 
-        {!isMobile ? (
+        {!isLarge ? (
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -122,7 +122,7 @@ const Header = () => {
         ) : null}
 
         <div className="flex items-center space-x-4">
-          {!isMobile ? (
+          {!isLarge ? (
             <>
               <ModeToggle />
               <Button 
@@ -147,7 +147,7 @@ const Header = () => {
               </DrawerTrigger>
               <DrawerContent className="h-[80vh]">
                 <DrawerTitle className="sr-only">Navigation Menu</DrawerTitle>
-                <DrawerDescription>
+                <DrawerDescription className="sr-only">
                   Site Navigation and User actions with authentication options
                 </DrawerDescription>
                 <DrawerHeader className="flex justify-end">

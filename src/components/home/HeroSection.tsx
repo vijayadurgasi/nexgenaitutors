@@ -24,15 +24,16 @@ const HeroSection = () => {
       <div className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl xl:max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl xl:text-7xl font-bold mb-6 bg-gradient-to-r from-navy-200 to-navy-300 bg-clip-text text-transparent">
-              Smarter Learning Today. Brighter Futures Tomorrow.
+            <h1 className="text-4xl md:text-6xl xl:text-7xl font-bold mb-6 bg-gradient-to-r from-navy-200 to-navy-300 bg-clip-text text-transparent leading-tight py-1">
+              NextGenAI Tutors: Smarter Learning, Brighter Futures
             </h1>
             <h2 className="text-xl md:text-2xl xl:text-3xl mb-8 text-white/90">
               Australia&apos;s Leading AI-Powered Online Tutoring Platform.
             </h2>
             <div className='xl:max-w-3xl mx-auto'>
-              <p className='text-sm md:text-base text-white/80 mb-10'>
-                Welcome to NextGenAI Tutors, where expert teaching meets cutting-edge AI to create truly personalised learning experiences for students across Australia. We&apos;re transforming online education, helping your child excel in school subjects, competitive exams, and future-ready skills.
+              <p className='text-xs md:text-sm text-white/80 mb-10'>
+               Imagine a learning journey where every lesson is tailored to your child&apos;s unique mind. At NextGenAI Tutors, we make that a reality. We&apos;ve brought together <strong>Australia&apos;s finest educators with advanced AI technology</strong> to create a truly personalised and effective online learning experience for students of all ages.<br /><br />
+From mastering core subjects to acing competitive exams and building future-ready skills, we&apos;re here to guide your child to success, affordably and conveniently.
               </p>
             </div>
 
