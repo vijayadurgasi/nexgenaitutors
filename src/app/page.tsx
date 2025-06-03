@@ -1,10 +1,13 @@
 
 import ChatbotButton from "@/components/Chat/ChatbotButton";
+import ChooseYourLearningStyle from "@/components/home/ChooseYourLearningStyle";
 import CtaSection from "@/components/home/CtaSection";
 import FeaturesSection from "@/components/home/FeaturesSection";
 import HeroSection from "@/components/home/HeroSection";
 import SubjectsSection from "@/components/home/SubjectsSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
+import ThreeStepPlan from "@/components/home/ThreeStepPlan";
+import WhyParentsTrustUs from "@/components/home/WhyParentsTrustUs";
 
 const Page = () => {
   return (
@@ -13,7 +16,10 @@ const Page = () => {
         <HeroSection />
         <FeaturesSection />
         <SubjectsSection />
-        <TestimonialsSection />
+        {/* <TestimonialsSection /> */}
+        <ThreeStepPlan />
+        <ChooseYourLearningStyle />
+        <WhyParentsTrustUs />
         <CtaSection />
       </main>
       <ChatbotButton />
