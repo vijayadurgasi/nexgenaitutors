@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import CountUp from '@/components/ui/count-up';
+import heroBlob from '@/assets/hero-blob.svg';
+import heroSideImage from '@/assets/hero-side-image.jpeg';
 
 const HeroSection = () => {
   return (
@@ -14,30 +16,30 @@ const HeroSection = () => {
           alt="Learning background"
           fill
           priority
-          className="object-cover brightness-[0.35]"
+          className="object-cover brightness-[0.25]"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary-foreground/80 mix-blend-multiply"></div>
+        <div className="absolute inset-0 dark:bg-gradient-to-r dark:from-primary/40 dark:to-primary-foreground/40 mix-blend-multiply"></div>
       </div>
 
       {/* First Screen - Hero Content */}
-      <div className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10">
-        <div className="container mx-auto px-4 text-center">
+      <div className="absolute top-16 lg:top-0 left-0 lg:left-16 w-full h-screen flex flex-col lg:flex-row items-center justify-center text-center lg:text-start lg:justify-start z-10">
+        <div className="container mx-auto px-4 ">
           <div className="max-w-3xl xl:max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl xl:text-7xl font-bold mb-6 bg-gradient-to-r from-navy-200 to-navy-300 bg-clip-text text-transparent leading-tight py-1">
+            <h1 className="text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold mb-6 bg-gradient-to-r from-navy-200 to-navy-300 bg-clip-text text-transparent leading-tight py-1">
               NextGenAI Tutors: Smarter Learning, Brighter Futures
             </h1>
-            <h2 className="text-xl md:text-2xl xl:text-3xl mb-8 text-white/90">
+            <h2 className="text-xl md:text-2xl xl:text-3xl mb-5 text-white/90">
               Australia&apos;s Leading AI-Powered Online Tutoring Platform.
             </h2>
             <div className='xl:max-w-3xl mx-auto'>
               <p className='text-xs md:text-sm text-white/80 mb-10'>
-               Imagine a learning journey where every lesson is tailored to your child&apos;s unique mind. At NextGenAI Tutors, we make that a reality. We&apos;ve brought together <strong>Australia&apos;s finest educators with advanced AI technology</strong> to create a truly personalised and effective online learning experience for students of all ages.<br /><br />
-From mastering core subjects to acing competitive exams and building future-ready skills, we&apos;re here to guide your child to success, affordably and conveniently.
+               We&apos;ve brought together <strong>Australia&apos;s finest educators with advanced AI technology</strong> to create a truly personalised and effective online learning experience for students of all ages.
+{/* From mastering core subjects to acing competitive exams and building future-ready skills, we&apos;re here to guide your child to success, affordably and conveniently. */}
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+            <div className="flex flex-col sm:flex-row gap-4 mt-10">
               <Link href="/contact-us">
                 <Button size={"lg"} className="text-lg bg-white text-navy-600 border border-white hover:bg-white/90 transition-transform hover:scale-105 duration-300">
                   Book a Demo Today
@@ -45,11 +47,46 @@ From mastering core subjects to acing competitive exams and building future-read
               </Link>
 
               <Link href="/subjects">
-                <Button size="lg" variant="outline" className="text-lg bg-transparent border-white text-white hover:bg-white/30 hover:text-white transition-transform hover:scale-105 duration-300">
+                <Button size="lg" variant="outline" className="text-lg px-[45px] bg-transparent border-white text-white hover:bg-white/30 hover:text-white transition-transform hover:scale-105 duration-300">
                   Explore Subjects
                 </Button>
               </Link>
             </div>
+          </div>
+        </div>
+        {/* Image with blob mask */}
+        <div className="flex justify-center items-center relative mt-6 lg:mt-0">
+          <div className="relative w-[600px] h-[400px] xl:w-[800px] xl:h-[600px] 2xl:w-[800px] 2xl:h-[600px]">
+            {/* SVG Mask - Using the blob as a mask */}
+            <div className="absolute inset-0 w-full h-full" style={{
+              maskImage: `url(${heroBlob.src})`,
+              WebkitMaskImage: `url(${heroBlob.src})`,
+              maskSize: 'contain',
+              WebkitMaskSize: 'contain',
+              maskRepeat: 'no-repeat',
+              WebkitMaskRepeat: 'no-repeat',
+              maskPosition: 'center',
+              WebkitMaskPosition: 'center'
+            }}>
+              <Image
+                src={heroSideImage}
+                alt="Learning illustration"
+                fill
+                className="object-cover scale-[0.75] dark:brightness-[0.9]"
+                sizes="(max-width: 640px) 400px, (max-width: 768px) 500px, (max-width: 1024px) 600px, (max-width: 1280px) 700px, 800px"
+              />
+            </div>
+
+            {/* Optional: Show the blob outline */}
+            {/* <div className="absolute inset-0 w-full h-full z-10 pointer-events-none">
+              <Image
+                src={heroBlob}
+                alt=""
+                fill
+                className="object-contain opacity-30"
+                sizes="(max-width: 640px) 400px, (max-width: 768px) 500px, (max-width: 1024px) 600px, (max-width: 1280px) 700px, 800px"
+              />
+            </div> */}
           </div>
         </div>
       </div>
