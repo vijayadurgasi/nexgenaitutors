@@ -11,15 +11,15 @@ const HeroSection = () => {
     <div className="relative -mt-5 h-[200vh]">
       {/* Background Image - Fixed within this component */}
       <div className="sticky top-0 left-0 w-full h-screen z-0 overflow-hidden">
-        <Image
+        {/* <Image
           src="https://images.unsplash.com/photo-1610484826967-09c5720778c7?w=1920&q=80"
           alt="Learning background"
           fill
           priority
-          className="object-cover brightness-[0.25]"
+          className="object-cover brightness-[0.4]"
           sizes="100vw"
-        />
-        <div className="absolute inset-0 dark:bg-gradient-to-r dark:from-primary/40 dark:to-primary-foreground/40 mix-blend-multiply"></div>
+        /> */}
+        <div className="absolute inset-0 dark:bg-primary/0 mix-blend-multiply"></div>
       </div>
 
       {/* First Screen - Hero Content */}
