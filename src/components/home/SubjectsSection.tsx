@@ -23,10 +23,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 
-const subjectCategories = [
+interface ICategory {
+    id: string;
+    name: string;
+    slug: string;
+    subjects: {
+        icon: JSX.Element;
+        title: string;
+        description: string;
+        slug: string;
+    }[];
+}
+
+const subjectCategories: Array<ICategory> = [
   {
     id: 'core-academic',
     name: 'Core Academic Subjects',
+    slug: 'core-academic-subjects',
     subjects: [
       { icon: <Calculator className="w-8 h-8" />, title: "Mathematics", description: "From algebra to calculus, master mathematical concepts", slug: "mathematics" },
       { icon: <BookOpen className="w-8 h-8" />, title: "English", description: "Reading, writing, grammar, and comprehension", slug: "english" },
@@ -37,6 +50,7 @@ const subjectCategories = [
   {
     id: 'regional-languages',
     name: 'Regional Languages',
+    slug: 'regional-languages',
     subjects: [
       { icon: <Languages className="w-8 h-8" />, title: "Hindi", description: "Learn to read, write and speak fluently", slug: "hindi" },
       { icon: <Languages className="w-8 h-8" />, title: "Telugu", description: "Master Telugu with native speakers", slug: "telugu" },
@@ -47,6 +61,7 @@ const subjectCategories = [
   {
     id: 'coding-tech',
     name: 'Coding & Tech Skills',
+    slug: 'coding-and-tech-skills',
     subjects: [
       { icon: <Code className="w-8 h-8" />, title: "Scratch Programming", description: "Visual programming for beginners", slug: "scratch" },
       { icon: <Code className="w-8 h-8" />, title: "Beginner Python", description: "Learn Python programming fundamentals", slug: "python" },
@@ -56,6 +71,7 @@ const subjectCategories = [
   {
     id: 'skill-building',
     name: 'Skill-Building Programs',
+    slug: 'skill-building-programs',
     subjects: [
       { icon: <Lightbulb className="w-8 h-8" />, title: "Vedic Maths", description: "Fast mental calculation techniques", slug: "vedic-maths" },
       { icon: <DraftingCompass className="w-8 h-8" />, title: "Abacus", description: "Ancient counting tool for mental math", slug: "abacus" },
@@ -65,6 +81,7 @@ const subjectCategories = [
   {
     id: 'well-being',
     name: 'Well-being for Kids',
+    slug: 'well-being-for-kids',
     subjects: [
       { icon: <Heart className="w-8 h-8" />, title: "Yoga", description: "Physical and mental wellness through yoga", slug: "yoga" },
       { icon: <HeartPulse className="w-8 h-8" />, title: "Mindfulness", description: "Techniques for emotional balance", slug: "mindfulness" }
@@ -73,6 +90,7 @@ const subjectCategories = [
   {
     id: 'exam-prep',
     name: 'Exam Preparation',
+    slug: 'exam-preparation',
     subjects: [
       { icon: <Award className="w-8 h-8" />, title: "NAPLAN", description: "National Assessment Program preparation", slug: "naplan" },
       { icon: <School className="w-8 h-8" />, title: "OC Test", description: "Opportunity Class placement test prep", slug: "oc-test" },
@@ -84,10 +102,10 @@ const subjectCategories = [
 const SubjectsSection = () => {
   const [activeCategory, setActiveCategory] = useState(subjectCategories[0].id);
 
-  const selectedCategory = subjectCategories.find(category => category.id === activeCategory);
+  const selectedCategory : ICategory | undefined = subjectCategories.find(category => category.id === activeCategory);
 
   return (
-    <section className="py-20 relative">
+    <section className="py-20 relative h-fit lg:h-[150vh]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -123,7 +141,7 @@ const SubjectsSection = () => {
                     "text-lg h-auto py-4 rounded-full",
                     activeCategory === category.id 
                       ? "bg-navy-500 text-white hover:bg-navy-600 border-navy-400" 
-                      : "bg-white/20 text-white hover:bg-white/20 border-white/30"
+                      : "bg-white/20 text-white border-white/30 hover:text-white hover:bg-white/40"
                   )}
                 >
                   {category.name}
@@ -143,8 +161,8 @@ const SubjectsSection = () => {
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {selectedCategory.subjects.map((subject, index) => (
-                    <Link href={`/subjects/${subject.slug}`} key={index}>
-                      <Card className="text-center p-6 hover:shadow-lg transition-shadow cursor-pointer hover:border-navy-400 group h-full bg-white/95 dark:bg-gray-700/85">
+                    <Link href={`/subjects/${selectedCategory.slug}/${subject.slug}`} key={index}>
+                      <Card className="text-center p-6 hover:shadow-lg transition-shadow cursor-pointer hover:border-navy-400 group h-full bg-background/75">
                         <CardContent className="relative pt-6 flex flex-col items-center h-full">
                           <ExternalLink className="absolute top-2 right-2 text-navy-400" />
                           <div className="mb-4 flex justify-center group-hover:scale-110 transition-transform text-navy-600 dark:text-navy-400">
