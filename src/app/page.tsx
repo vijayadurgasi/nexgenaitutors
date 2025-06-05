@@ -5,7 +5,6 @@ import CtaSection from "@/components/home/CtaSection";
 import FeaturesSection from "@/components/home/FeaturesSection";
 import HeroSection from "@/components/home/HeroSection";
 import SubjectsSection from "@/components/home/SubjectsSection";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
 import ThreeStepPlan from "@/components/home/ThreeStepPlan";
 import WhyParentsTrustUs from "@/components/home/WhyParentsTrustUs";
 

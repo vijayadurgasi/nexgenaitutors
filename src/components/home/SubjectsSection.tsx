@@ -162,15 +162,15 @@ const SubjectsSection = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {selectedCategory.subjects.map((subject, index) => (
                     <Link href={`/subjects/${selectedCategory.slug}/${subject.slug}`} key={index}>
-                      <Card className="text-center p-6 hover:shadow-lg transition-shadow cursor-pointer hover:border-navy-400 group h-full bg-background/75">
+                      <Card className="text-center p-6 hover:shadow-lg transition-shadow cursor-pointer hover:border-navy-400 group h-full bg-white/80">
                         <CardContent className="relative pt-6 flex flex-col items-center h-full">
-                          <ExternalLink className="absolute top-2 right-2 text-navy-400" />
-                          <div className="mb-4 flex justify-center group-hover:scale-110 transition-transform text-navy-600 dark:text-navy-400">
+                          <ExternalLink className="absolute top-2 right-2 text-navy-700" />
+                          <div className="mb-4 flex justify-center group-hover:scale-110 transition-transform text-navy-600">
                             {subject.icon}
                           </div>
-                          <h3 className="text-lg font-semibold mb-2">{subject.title}</h3>
-                          <p className="text-sm text-gray-600 dark:text-gray-300">{subject.description}</p>
-                          <div className="mt-auto pt-4 text-navy-600 dark:text-navy-400 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                          <h3 className="text-lg font-semibold text-navy-600 mb-2">{subject.title}</h3>
+                          <p className="text-sm text-gray-600">{subject.description}</p>
+                          <div className="mt-auto pt-4 text-navy-600 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-in-out">
                             <span>Learn more</span>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
                               <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />

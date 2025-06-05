@@ -1,6 +1,5 @@
-import Link from "next/link";
-import { GraduationCap } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -56,8 +55,8 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-4">Subscribe</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            <h3 className="text-xl font-semibold mb-4">Subscribe</h3>
+            <p className="text-base text-gray-600 dark:text-gray-400 mb-4">
               Get the latest news and updates
             </p>
             <form className="flex flex-col space-y-2">

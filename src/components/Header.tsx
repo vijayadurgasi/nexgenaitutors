@@ -1,7 +1,16 @@
 'use client'
 
+import ModeToggle from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,21 +19,12 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
-import React from "react";
-import { GraduationCap, Menu, X } from "lucide-react";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTrigger,
-  DrawerClose,
-  DrawerTitle,
-  DrawerDescription,
-} from "@/components/ui/drawer";
-import ModeToggle from "@/components/mode-toggle";
 import { useIsLarge } from "@/hooks/use-large";
+import { cn } from "@/lib/utils";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 const Header = () => {
   const isLarge = useIsLarge();

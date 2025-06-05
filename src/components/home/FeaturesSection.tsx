@@ -23,37 +23,37 @@ const FeaturesSection = () => {
               icon={<Route className="w-36 h-36 text-navy-900/70" />}
               title="Personalized Learning Plans"
               description="Tailored to your child's unique style and pace."
-              image="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+              image="https://images.unsplash.com/photo-1603354350317-6f7aaa5911c5?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             />
             <TiltCard
               icon={<Clock className="w-36 h-36 text-navy-900/70" />}
               title="Real-Time Progress Tracking"
               description="See exactly how your child is performing and improving."
-              image="https://images.unsplash.com/photo-1460925895917-afdab827c52f"
+              image="https://images.unsplash.com/photo-1730382624360-9cf5609c8364?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             />
             <TiltCard
               icon={<BookOpen className="w-36 h-36 text-navy-900/70" />}
               title="Smart Practice & Adaptive Assignments"
               description="Focused exercises that target specific learning gaps."
-              image="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+              image="https://images.unsplash.com/photo-1637195141546-2469a5312504?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             />
             <TiltCard
               icon={<Users className="w-36 h-36 text-navy-900/70" />}
               title="Increased Engagement"
               description="Interactive content keeps learning exciting."
-              image="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+              image="https://images.unsplash.com/photo-1534643960519-11ad79bc19df?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dc"
             />
             <TiltCard
               icon={<House className="w-36 h-36 text-navy-900/70" />}
               title="Flexible & Convenient"
               description="Quality education from the comfort of your home"
-              image="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+              image="https://plus.unsplash.com/premium_photo-1706430114467-e6529dc85b95?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             />
             <TiltCard
               icon={<GraduationCap className="w-36 h-36 text-navy-900/70" />}
               title="Expert Tutors"
               description="Highly qualified educators from Australia, India and around the world."
-              image="https://images.unsplash.com/photo-1460925895917-afdab827c52f"
+              image="https://images.unsplash.com/photo-1620894169431-a2231552593d?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             />
           </div>
         </div>

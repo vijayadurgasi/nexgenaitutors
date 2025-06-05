@@ -6,10 +6,10 @@ import Image from "next/image";
 
 export default function ThreeDCardDemo() {
   return (
-    <section className="py-20 bg-accent/90 dark:bg-gradient-to-r dark:from-background dark:via-navy-950/50 dark:to-background ">
+    <section className="py-20 bg-accent/90 bg-gradient-to-r from-navy-950 via-navy-700 to-navy-950 dark:bg-gradient-to-r dark:from-background dark:via-navy-950/50 dark:to-background ">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <h2 className="text-3xl md:text-4xl xl:text-5xl font-extrabold mb-6">
+          <h2 className="text-3xl md:text-4xl xl:text-5xl text-white font-extrabold mb-6">
             Choose Your Learning Style
           </h2>
           {/* <p className="text-xl text-gray-600 dark:text-gray-400">
@@ -46,7 +46,7 @@ export default function ThreeDCardDemo() {
                 <CardItem
                   translateZ={20}
                   as="a"
-                  href="https://twitter.com/mannupaaji"
+                  href="/contact-us"
                   target="__blank"
                   className="px-4 py-2 rounded-xl bg-white dark:bg-gray-950 dark:text-white dark:border-white text-primary text-lg border border-primary"
                 >
@@ -83,7 +83,7 @@ export default function ThreeDCardDemo() {
                 <CardItem
                   translateZ={20}
                   as="a"
-                  href="https://twitter.com/mannupaaji"
+                  href="/contact-us"
                   target="__blank"
                   className="px-4 py-2 rounded-xl bg-white text-primary text-lg border border-primary dark:bg-gray-950 dark:text-white dark:border-white"
                 >
