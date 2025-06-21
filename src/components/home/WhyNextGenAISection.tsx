@@ -16,7 +16,7 @@ const WhyNextGenAISection = () => {
     },
     {
       icon: <Book className="h-6 w-6 text-navy-600" />,
-      title: "Smart Practice & Adaptive Assignments",
+      title: "Smart Practice & Adaptive Assessments",
       description: "Focused exercises that target specific learning gaps"
     },
     {

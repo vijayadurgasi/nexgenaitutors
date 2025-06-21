@@ -12,7 +12,7 @@ const WhatWeOfferSection = () => {
     {
       icon: <Globe className="h-8 w-8 text-navy-600" />,
       title: "Regional Languages",
-      description: "Hindi, Telugu, Tamil, and more, taught by native speakers"
+      description: "Hindi, Telugu, Tamil, and more — taught by native speakers"
     },
     {
       icon: <Code className="h-8 w-8 text-navy-600" />,
