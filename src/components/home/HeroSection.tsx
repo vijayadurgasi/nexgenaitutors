@@ -14,14 +14,14 @@ const HeroSection = () => {
                 NextGenAI Tutors: Smarter Learning, Brighter Futures
               </h1>
               <p className="text-xl md:text-2xl text-navy-200 font-medium">
-                Australia's Leading AI-Powered Online Tutoring Platform
+                Australia&apos;s Leading AI-Powered Online Tutoring Platform
               </p>
             </div>
             <p className="text-lg md:text-xl text-gray-100 leading-relaxed max-w-2xl">
-              Imagine a learning journey where every lesson is tailored to your child's unique mind. At NextGenAI Tutors, we make that a reality. We've brought together Australia's finest educators with advanced AI technology to create a truly personalised and effective online learning experience for students of all ages.
+              Imagine a learning journey where every lesson is tailored to your child&apos;s unique mind. At NextGenAI Tutors, we make that a reality. We&apos;ve brought together Australia&apos;s finest educators with advanced AI technology to create a truly personalised and effective online learning experience for students of all ages.
             </p>
             <p className="text-lg text-gray-100 leading-relaxed max-w-2xl">
-              From mastering core subjects to acing competitive exams and building future-ready skills, we're here to guide your child to success, affordably and conveniently.
+              From mastering core subjects to acing competitive exams and building future-ready skills, we&apos;re here to guide your child to success, affordably and conveniently.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link href="/contact-us">

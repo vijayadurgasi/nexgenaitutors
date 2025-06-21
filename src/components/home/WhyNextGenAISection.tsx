@@ -44,7 +44,7 @@ const WhyNextGenAISection = () => {
             Why NextGenAI? The Future of Learning is Here.
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed">
-            Traditional tutoring can't keep pace with every child's unique needs. That's why we combine the best of human expertise with advanced AI to deliver:
+            Traditional tutoring can&apos;t keep pace with every child&apos;s unique needs. That&apos;s why we combine the best of human expertise with advanced AI to deliver:
           </p>
         </div>
         
@@ -66,7 +66,7 @@ const WhyNextGenAISection = () => {
         
         <div className="text-center">
           <p className="text-xl font-semibold text-navy-800 bg-navy-50 dark:bg-navy-900/20 p-6 rounded-lg inline-block">
-            NextGenAI Tutors isn't just a service; it's a modern edge for your child's education.
+            NextGenAI Tutors isn&apos;t just a service; it&apos;s a modern edge for your child&apos;s education.
           </p>
         </div>
       </div>

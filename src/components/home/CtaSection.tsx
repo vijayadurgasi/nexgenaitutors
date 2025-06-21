@@ -21,7 +21,7 @@ const CtaSection = () => {
         </h2>
         <p className="text-xl mb-10 max-w-3xl mx-auto leading-relaxed">
           Join thousands of students already benefiting from AI-powered tutoring.
-          Start today and see the difference in your child's academic performance.
+          Start today and see the difference in your child&apos;s academic performance.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-6">
           <Link href="/contact-us">
