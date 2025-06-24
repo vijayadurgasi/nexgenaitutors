@@ -1,15 +1,15 @@
+import Image from "next/image";
 import Link from "next/link";
-import { GraduationCap } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="bg-background border-t p-5 border-gray-200 dark:border-gray-800">
+      <div className="container mx-auto px-4 pt-12 pb-2">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <GraduationCap className="h-6 w-6 text-navy-600" />
-              <h3 className="text-lg font-semibold">NextGen AI Tutors</h3>
+              <Image src={"/logo.png"} alt="logo" width={20} height={20} className="w-10 h-10" />
+              <h3 className="text-xl font-semibold">NextGen AI Tutors</h3>
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Personalized learning experiences powered by artificial intelligence
@@ -55,15 +55,15 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-4">Subscribe</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            <h3 className="text-xl font-semibold mb-4">Subscribe</h3>
+            <p className="text-base text-gray-600 dark:text-gray-400 mb-4">
               Get the latest news and updates
             </p>
             <form className="flex flex-col space-y-2">
               <input
                 type="email"
                 placeholder="Your email"
-                className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-navy-600"
+                className="px-4 py-2 bg-background rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-navy-600"
               />
               <button
                 type="submit"

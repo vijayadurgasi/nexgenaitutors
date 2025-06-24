@@ -1,17 +1,18 @@
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 const CtaSection = () => {
   return (
-    <section className="bg-gradient-to-r from-navy-700 to-navy-900 text-white py-16 relative overflow-hidden">
+    <section className="bg-gradient-to-r from-navy-700 to-navy-900 text-white py-20 relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <Image
           width={1920}
           height={1080}
-          src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+          src="https://plus.unsplash.com/premium_photo-1664104459156-21e2a06e7173?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Background"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover dark:brightness-[50%]"
         />
       </div>
       <div className="container mx-auto px-4 text-center relative z-10">
