@@ -1,47 +1,37 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import CountUp from '@/components/ui/count-up';
-import heroBlob from '@/assets/hero-blob.svg';
-import heroSideImage from '@/assets/hero-side-image.jpeg';
+
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
-    <div className="relative -mt-5 h-[200vh]">
-      {/* Background Image - Fixed within this component */}
-      <div className="sticky top-0 left-0 w-full h-screen z-0 overflow-hidden">
-        {/* <Image
-          src="https://images.unsplash.com/photo-1610484826967-09c5720778c7?w=1920&q=80"
-          alt="Learning background"
-          fill
-          priority
-          className="object-cover brightness-[0.4]"
-          sizes="100vw"
-        /> */}
-        <div className="absolute inset-0 dark:bg-primary/0 mix-blend-multiply"></div>
-      </div>
-
-      {/* First Screen - Hero Content */}
-      <div className="absolute top-16 lg:top-0 left-0 lg:left-16 w-full h-screen flex flex-col lg:flex-row items-center justify-center text-center lg:text-start lg:justify-start z-10">
-        <div className="container mx-auto lg:-mt-16 px-4 ">
-          <div className="max-w-3xl xl:max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold mb-6 bg-gradient-to-r dark:from-navy-200 from-navy-800 dark:to-navy-300 to-navy-900 bg-clip-text text-transparent leading-tight py-1">
-              NextGenAI Tutors: Smarter Learning, Brighter Futures
-            </h1>
-            <h2 className="text-xl md:text-2xl xl:text-3xl mb-5">
-              Australia&apos;s Leading AI-Powered Online Tutoring Platform.
-            </h2>
-            {/* <div className='xl:max-w-3xl mx-auto'>
-              <p className='text-xs md:text-sm mb-10'>
-               We&apos;ve brought together <strong>Australia&apos;s finest educators with advanced AI technology</strong> to create a truly personalised and effective online learning experience for students of all ages.
+    <section className="bg-gradient-to-r from-navy-800 to-navy-900 text-white py-16 md:py-20">
+      <div className="container mx-auto px-4">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="text-left space-y-6">
+            <div className="space-y-3">
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                NextGenAI Tutors: Smarter Learning, Brighter Futures
+              </h1>
+              <p className="text-xl md:text-2xl text-navy-200 font-medium">
+                Australia&apos;s Leading AI-Powered Online Tutoring Platform
               </p>
-            </div> */}
-
-            <div className="flex flex-col items-center justify-center lg:justify-start sm:flex-row gap-4 mt-10">
+            </div>
+            <p className="text-lg md:text-xl text-gray-100 leading-relaxed max-w-2xl">
+              Imagine a learning journey where every lesson is tailored to your child&apos;s unique mind. At NextGenAI Tutors, we make that a reality. We&apos;ve brought together Australia&apos;s finest educators with advanced AI technology to create a truly personalised and effective online learning experience for students of all ages.
+            </p>
+            <p className="text-lg text-gray-100 leading-relaxed max-w-2xl">
+              From mastering core subjects to acing competitive exams and building future-ready skills, we&apos;re here to guide your child to success, affordably and conveniently.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link href="/contact-us">
-                <Button size={"lg"} className="text-lg w-[230px] text-white bg-gradient-to-r from-navy-600 to-navy-800 transition-transform hover:scale-105 duration-300">
-                  Book a Demo Today
+                <Button size="lg" variant="secondary" className="text-lg px-8 w-full sm:w-auto">
+                  Book Your Free Assessment Today!
+                </Button>
+              </Link>
+              <Link href="/packages">
+                <Button size="lg" variant="outline" className="text-lg bg-transparent border-white text-white hover:bg-white/10 w-full sm:w-auto">
+                  View Our Programs
                 </Button>
               </Link>
 
@@ -79,81 +69,24 @@ const HeroSection = () => {
             {/* Optional: Show the blob outline */}
             {/* <div className="absolute inset-0 w-full h-full z-10 pointer-events-none">
               <Image
-                src={heroBlob}
-                alt=""
-                fill
-                className="object-contain opacity-30"
-                sizes="(max-width: 640px) 400px, (max-width: 768px) 500px, (max-width: 1024px) 600px, (max-width: 1280px) 700px, 800px"
+                width={600}
+                height={400}
+                src="https://images.unsplash.com/photo-1610484826967-09c5720778c7"
+                alt="Kid learning with AI technology"
+                className="rounded-lg shadow-xl w-full object-cover h-[400px] border-4 border-white/30"
               />
-            </div> */}
-          </div>
-        </div>
-      </div>
-
-      {/* Second Screen - Stats Card */}
-      <div className="absolute top-screen bg-accent mt-10 lg:mt-2 dark:bg-background left-0 w-full h-screen flex items-center justify-center z-10">
-        <div className="container mx-auto px-4">
-          <div className="dark:bg-white/10 bg-white backdrop-blur-md p-10 rounded-xl max-w-3xl mx-auto dark:border border-2 dark:border-white/20 border-navy-900 text-primary dark:text-white">
-            {/* <h2 className="text-3xl md:text-4xl font-bold mb-5 text-center">Our Impact</h2> */}
-            <div className='xl:max-w-3xl mx-auto'>
-              <p className='text-lg md:text-xl mb-10 text-center'>
-               We&apos;ve brought together <strong>Australia&apos;s finest educators with advanced AI technology</strong> to create a truly personalised and effective online learning experience for students of all ages.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <p className="text-5xl font-extrabold">
-                  <CountUp
-                    from={0}
-                    to={97}
-                    separator=","
-                    direction="up"
-                    duration={1}
-                    className="count-up-text"
-                  />
-                  <span>%</span>
-                </p>
-                <p className="mt-2">Student Satisfaction</p>
-              </div>
-
-              <div className="text-center">
-                <p className="text-5xl font-extrabold">
-                  <CountUp
-                    from={0}
-                    to={500}
-                    separator=","
-                    direction="up"
-                    duration={1}
-                    className="count-up-text"
-                  />
-                  <span>+</span>
-                </p>
-                <p className="mt-2">Tutoring Hours</p>
-              </div>
-
-              <div className="text-center">
-                <p className="text-5xl font-extrabold">
-                  <CountUp
-                    from={0}
-                    to={95}
-                    separator=","
-                    direction="up"
-                    duration={1}
-                    className="count-up-text"
-                  />
-                  <span>%</span>
-                </p>
-                <p className="mt-2 ">Grade Improvement</p>
+              <div className="absolute -bottom-6 -right-6 bg-white text-navy-800 p-4 rounded-lg shadow-lg md:max-w-[200px]">
+                <p className="font-bold text-lg">95%</p>
+                <p className="text-sm">of students improved their grades within 3 months</p>
               </div>
             </div>
-
-            <div className="mt-12 text-center">
-              <Link href="/about-us">
-                <Button size="lg" className="text-lg bg-navy-600 text-white">
-                  Learn More
-                </Button>
-              </Link>
-            </div>
+            <Image
+              width={100}
+              height={100}
+              src="https://images.unsplash.com/photo-1599687351724-dfa3c4ff81b1"
+              alt="Student with AI learning tools"
+              className="absolute -top-4 -left-4 w-36 h-36 rounded-full border-4 border-white/30 shadow-lg hidden md:block object-cover"
+            />
           </div>
         </div>
       </div>
