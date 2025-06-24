@@ -32,8 +32,8 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full bg-white dark:bg-background border-b border-gray-200 dark:border-gray-800">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
-          <Image src={"/logo.png"} alt="logo" width={20} height={20} className="w-10 h-10" />
+        <Link href="/" className="flex items-center space-x-4">
+          <Image src={"/logo.png"} alt="logo" width={20} height={20} className="w-10 h-10 rounded-full" />
           <span className="text-2xl font-bold bg-gradient-to-r dark:from-navy-200 from-navy-500 dark:to-navy-400 to-navy-900 bg-clip-text text-transparent">
             NextGen AI Tutors
           </span>
