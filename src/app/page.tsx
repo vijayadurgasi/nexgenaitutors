@@ -1,5 +1,6 @@
 
 import ChatbotButton from "@/components/Chat/ChatbotButton";
+import ChooseYourLearningStyle from "@/components/home/ChooseYourLearningStyle";
 import CtaSection from "@/components/home/CtaSection";
 import FeaturesSection from "@/components/home/FeaturesSection";
 import HeroSection from "@/components/home/HeroSection";

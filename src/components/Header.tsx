@@ -1,7 +1,16 @@
 'use client'
 
+import ModeToggle from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,32 +19,27 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { useIsLarge } from "@/hooks/use-large";
 import { cn } from "@/lib/utils";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
-import { GraduationCap, Menu, X } from "lucide-react";
-import { useIsMobile } from "@/hooks/use-mobile";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTrigger,
-  DrawerClose,
-} from "@/components/ui/drawer";
 
 const Header = () => {
-  const isMobile = useIsMobile();
+  const isLarge = useIsLarge();
 
   return (
-    <header className="sticky top-0 z-50 w-full backdrop-blur-lg bg-white/75 dark:bg-gray-900/75 border-b border-gray-200 dark:border-gray-800">
+    <header className="sticky top-0 z-50 w-full bg-white dark:bg-background border-b border-gray-200 dark:border-gray-800">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
-          <GraduationCap className="h-8 w-8 text-navy-600" />
-          <span className="text-2xl font-bold bg-gradient-to-r from-navy-600 to-navy-800 bg-clip-text text-transparent">
+        <Link href="/" className="flex items-center space-x-4">
+          <Image src={"/logo.png"} alt="logo" width={20} height={20} className="w-10 h-10 rounded-full" />
+          <span className="text-2xl font-bold bg-gradient-to-r dark:from-navy-200 from-navy-500 dark:to-navy-400 to-navy-900 bg-clip-text text-transparent">
             NextGen AI Tutors
           </span>
         </Link>
 
-        {!isMobile ? (
+        {!isLarge ? (
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -119,8 +123,9 @@ const Header = () => {
         ) : null}
 
         <div className="flex items-center space-x-4">
-          {!isMobile ? (
+          {!isLarge ? (
             <>
+              <ModeToggle />
               <Button 
                 variant="ghost" 
                 className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900"
@@ -135,12 +140,17 @@ const Header = () => {
             </>
           ) : (
             <Drawer>
+              <ModeToggle />
               <DrawerTrigger asChild>
                 <Button variant="ghost" size="icon">
                   <Menu className="h-6 w-6" />
                 </Button>
               </DrawerTrigger>
               <DrawerContent className="h-[80vh]">
+                <DrawerTitle className="sr-only">Navigation Menu</DrawerTitle>
+                <DrawerDescription className="sr-only">
+                  Site Navigation and User actions with authentication options
+                </DrawerDescription>
                 <DrawerHeader className="flex justify-end">
                   <DrawerClose asChild>
                     <Button variant="ghost" size="icon">

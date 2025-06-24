@@ -34,10 +34,40 @@ const HeroSection = () => {
                   View Our Programs
                 </Button>
               </Link>
+
+              <Link href="/about-us">
+                <Button size="lg" variant="outline" className="text-lg w-[230px] bg-transparent border-navy-600 dark:border-white text-navy-600 dark:text-white hover:bg-white/30 transition-transform hover:scale-105 duration-300">
+                  Read More
+                </Button>
+              </Link>
             </div>
           </div>
-          <div className="relative flex justify-center md:justify-end">
-            <div className="relative">
+        </div>
+        {/* Image with blob mask */}
+        <div className="flex justify-center items-center relative my-6 lg:mt-0">
+          <div className="relative w-[600px] h-[400px] xl:w-[800px] xl:h-[600px] 2xl:w-[800px] 2xl:h-[600px]">
+            {/* SVG Mask - Using the blob as a mask */}
+            <div className="absolute inset-0 w-full h-full" style={{
+              maskImage: `url(${heroBlob.src})`,
+              WebkitMaskImage: `url(${heroBlob.src})`,
+              maskSize: 'contain',
+              WebkitMaskSize: 'contain',
+              maskRepeat: 'no-repeat',
+              WebkitMaskRepeat: 'no-repeat',
+              maskPosition: 'center',
+              WebkitMaskPosition: 'center'
+            }}>
+              <Image
+                src={heroSideImage}
+                alt="Learning illustration"
+                fill
+                className="object-cover scale-[0.75] dark:brightness-[0.9]"
+                sizes="(max-width: 640px) 400px, (max-width: 768px) 500px, (max-width: 1024px) 600px, (max-width: 1280px) 700px, 800px"
+              />
+            </div>
+
+            {/* Optional: Show the blob outline */}
+            {/* <div className="absolute inset-0 w-full h-full z-10 pointer-events-none">
               <Image
                 width={600}
                 height={400}
@@ -60,7 +90,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
