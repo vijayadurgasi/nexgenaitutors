@@ -25,7 +25,7 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
-      content: "Hi there! I'm NextGen AI Assistant. How can I assist you today?",
+      content: "Hi there! I'm NextGen AI Tutor. How can I assist you today?",
       isUser: false,
       timestamp: new Date()
     }
@@ -195,15 +195,15 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
   }, [onClose]);
 
   return (
-    <div className="flex flex-col h-[500px] max-h-[80vh] rounded-lg shadow-lg border border-gray-200 dark:border-navy-900 overflow-hidden" ref={formRef}>
-      <div className="bg-navy-800 text-white p-3 flex justify-between items-center rounded-t-lg">
-        <h3 className="text-sm font-medium">NextGen AI Assistant</h3>
-        <Button variant="ghost" size="icon" onClick={onClose} className="text-white hover:text-white hover:bg-navy-700 h-6 w-6">
+    <div className="flex flex-col h-[500px] max-h-[80vh] rounded-lg shadow-lg border border-gray-200 overflow-hidden" ref={formRef}>
+      <div className="bg-navy-600 text-white p-3 flex justify-between items-center rounded-t-lg">
+        <h3 className="text-sm font-medium">NextGen AI Tutors</h3>
+        <Button variant="ghost" size="icon" onClick={onClose} className="text-white hover:bg-navy-700 h-6 w-6">
           <X className="h-3 w-3" />
         </Button>
       </div>
       
-      <div className="flex-grow flex flex-col overflow-hidden bg-white dark:bg-gray-900">
+      <div className="flex-grow flex flex-col overflow-hidden bg-white">
         <ScrollArea className="flex-grow relative" ref={scrollAreaRef}>
           <div className="p-4 min-h-full" ref={chatContainerRef}>
             {messages.map((msg, index) => (
@@ -215,7 +215,7 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
                   className={`inline-block max-w-[85%] px-4 py-2.5 rounded-2xl ${
                     msg.isUser 
                       ? 'bg-navy-600 text-white rounded-br-none' 
-                      : 'bg-navy-200 dark:bg-white text-navy-950 rounded-bl-none'
+                      : 'bg-gray-100 text-navy-800 rounded-bl-none'
                   }`}
                 >
                   <p className="whitespace-pre-wrap break-words">{msg.content}</p>
@@ -239,19 +239,19 @@ const ChatbotForm = ({ onClose }: ChatbotFormProps) => {
           </div>
         </ScrollArea>
         
-        <form onSubmit={sendChatMessage} className="p-3 border-t border-gray-200 dark:border-none flex items-center bg-white dark:bg-navy-900 rounded-b-lg shadow-inner">
+        <form onSubmit={sendChatMessage} className="p-3 border-t border-gray-200 flex items-center bg-white rounded-b-lg shadow-inner">
           <Input
             ref={inputRef}
             type="text"
             placeholder="Type your message..."
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
-            className="flex-grow mr-2 text-black bg-gray-50 border-navy-200 focus:border-navy-400 focus:ring-2 focus:ring-navy-300 rounded-full"
+            className="flex-grow mr-2 bg-gray-50 border-navy-200 focus:border-navy-400 focus:ring-2 focus:ring-navy-300 rounded-full"
             disabled={isLoading}
           />
           <Button 
             type="submit" 
-            className="bg-navy-600 text-white w-12 h-10 hover:bg-navy-600 rounded-full" 
+            className="bg-navy-600 hover:bg-navy-700 rounded-full" 
             disabled={isLoading || !userInput.trim()}
             size="icon"
           >

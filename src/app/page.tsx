@@ -1,14 +1,9 @@
 
 import ChatbotButton from "@/components/Chat/ChatbotButton";
-import ChooseYourLearningStyle from "@/components/home/ChooseYourLearningStyle";
 import CtaSection from "@/components/home/CtaSection";
 import FeaturesSection from "@/components/home/FeaturesSection";
 import HeroSection from "@/components/home/HeroSection";
-import WhyNextGenAISection from "@/components/home/WhyNextGenAISection";
-import WhatWeOfferSection from "@/components/home/WhatWeOfferSection";
-import SuccessPlanSection from "@/components/home/SuccessPlanSection";
-import LearningStyleSection from "@/components/home/LearningStyleSection";
-import TrustSection from "@/components/home/TrustSection";
+import SubjectsSection from "@/components/home/SubjectsSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 
 const Page = () => {
@@ -16,12 +11,8 @@ const Page = () => {
     <div className="min-h-screen flex flex-col">
       <main className="flex-grow">
         <HeroSection />
-        <WhyNextGenAISection />
-        <WhatWeOfferSection />
-        <SuccessPlanSection />
-        <LearningStyleSection />
         <FeaturesSection />
-        <TrustSection />
+        <SubjectsSection />
         <TestimonialsSection />
         <CtaSection />
       </main>
