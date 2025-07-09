@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: "NextGen AI Tutors",
+  title: "NextGenAI Tutors",
   description: "Personalized learning experiences powered by advanced artificial intelligence",
   authors: [{ name: "NextGen AI Tutors" }],
   icons: {
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     shortcut: "/icons/favicon-16x16.png",
   },
   manifest: "/manifest.json",
-  applicationName: "NextGen AI Tutors",
+  applicationName: "NextGenAI Tutors",
   openGraph: {
     type: "website",
     url: "https://yourdomain.com/",

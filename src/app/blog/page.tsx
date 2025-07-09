@@ -1,9 +1,7 @@
-
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import { blogPosts, type BlogPost } from "@/lib/blog-data";
+import { blogPosts, type BlogPost } from "@/lib/blog-card-data";
 
 const Blog = () => {
   return (
@@ -25,15 +23,6 @@ const Blog = () => {
                 <BlogCard key={index} {...post} />
               ))}
             </div>
-
-            <div className="mt-16 text-center">
-              <Button
-                variant="outline"
-                className="border-navy-600 text-navy-600 hover:bg-navy-600 hover:text-white"
-              >
-                Load More Articles
-              </Button>
-            </div>
           </div>
         </section>
       </main>
@@ -41,12 +30,19 @@ const Blog = () => {
   );
 };
 
-const BlogCard = ({ title, category, date, excerpt, image, slug }: BlogPost) => {
+const BlogCard = ({
+  title,
+  category,
+  date,
+  excerpt,
+  image,
+  slug,
+}: BlogPost) => {
   return (
     <Card className="overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1">
       <div className="relative h-56">
-        <Image 
-          src={image} 
+        <Image
+          src={image}
           alt={title}
           className="w-full h-full object-cover"
           width={600}
@@ -60,7 +56,7 @@ const BlogCard = ({ title, category, date, excerpt, image, slug }: BlogPost) => 
         <p className="text-sm text-gray-500 mb-2">{date}</p>
         <h3 className="text-xl font-bold mb-3">{title}</h3>
         <p className="text-gray-600 mb-4 line-clamp-3">{excerpt}</p>
-        <Link 
+        <Link
           href={`/blog/${slug}`}
           className="text-navy-600 font-semibold hover:text-navy-800"
         >

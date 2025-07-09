@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import ModeToggle from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
@@ -30,12 +30,18 @@ const Header = () => {
   const isLarge = useIsLarge();
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white dark:bg-background border-b border-gray-200 dark:border-gray-800">
+    <header className="sticky top-0 z-50 w-full bg-white/80 dark:bg-background/80 backdrop-blur-md border-b border-gray-200/50 dark:border-navy-700/50 shadow-sm">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="flex items-center space-x-4">
-          <Image src={"/logo.png"} alt="logo" width={20} height={20} className="w-10 h-10 rounded-full" />
-          <span className="text-2xl font-bold bg-gradient-to-r dark:from-navy-200 from-navy-500 dark:to-navy-400 to-navy-900 bg-clip-text text-transparent">
-            NextGen AI Tutors
+        <Link href="/" className="flex items-center space-x-2">
+          <Image
+            src={"/logo.png"}
+            alt="logo"
+            width={60}
+            height={60}
+            className="rounded-full"
+          />
+          <span className="text-3xl font-bold bg-gradient-to-r dark:from-navy-200 from-navy-500 dark:to-navy-400 to-navy-900 bg-clip-text text-transparent">
+            NextGenAI Tutors
           </span>
         </Link>
 
@@ -55,7 +61,7 @@ const Header = () => {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Subjects</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                  <ul className="grid w-[250px] gap-2 p-2 md:w-[300px] md:grid-cols-1 lg:w-[350px]">
                     {subjects.map((subject) => (
                       <ListItem
                         key={subject.title}
@@ -65,6 +71,14 @@ const Header = () => {
                         {subject.description}
                       </ListItem>
                     ))}
+                    <li className="col-span-full">
+                      <Link
+                        href="/subjects"
+                        className="block w-full text-center rounded-md bg-navy-700 px-2 py-1 text-sm font-medium text-white hover:bg-accent-dark"
+                      >
+                        All Subjects
+                      </Link>
+                    </li>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -126,17 +140,19 @@ const Header = () => {
           {!isLarge ? (
             <>
               <ModeToggle />
-              <Button 
-                variant="ghost" 
-                className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900"
-              >
-                Log in
-              </Button>
-              <Button 
-                className="bg-white text-navy-600 border border-navy-600 hover:bg-navy-50"
-              >
-                Sign Up
-              </Button>
+              <Link href="/login">
+                <Button
+                  variant="ghost"
+                  className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900"
+                >
+                  Log in
+                </Button>
+              </Link>
+              <Link href="/signup">
+                <Button className="bg-white text-navy-600 border border-navy-600 hover:bg-navy-50">
+                  Sign Up
+                </Button>
+              </Link>
             </>
           ) : (
             <Drawer>
@@ -159,60 +175,81 @@ const Header = () => {
                   </DrawerClose>
                 </DrawerHeader>
                 <div className="px-4 py-2 flex flex-col space-y-4">
-                  <Link 
-                    href="/" 
-                    className="text-lg font-medium hover:text-navy-600 transition-colors"
-                  >
-                    Home
-                  </Link>
-                  <Link 
-                    href="/subjects/mathematics" 
-                    className="text-lg font-medium hover:text-navy-600 transition-colors"
-                  >
-                    Subjects
-                  </Link>
-                  <Link 
-                    href="/teachers" 
-                    className="text-lg font-medium hover:text-navy-600 transition-colors"
-                  >
-                    Teachers
-                  </Link>
-                  <Link 
-                    href="/blog" 
-                    className="text-lg font-medium hover:text-navy-600 transition-colors"
-                  >
-                    Blog
-                  </Link>
-                  <Link 
-                    href="/about-us" 
-                    className="text-lg font-medium hover:text-navy-600 transition-colors"
-                  >
-                    About Us
-                  </Link>
-                  <Link 
-                    href="/contact-us" 
-                    className="text-lg font-medium hover:text-navy-600 transition-colors"
-                  >
-                    Contact Us
-                  </Link>
-                  <Link 
-                    href="/packages" 
-                    className="text-lg font-medium hover:text-navy-600 transition-colors"
-                  >
-                    Packages
-                  </Link>
+                  <DrawerClose asChild>
+                    <Link
+                      href="/"
+                      className="text-lg font-medium hover:text-navy-600 transition-colors"
+                    >
+                      {" "}
+                      Home{" "}
+                    </Link>
+                  </DrawerClose>
+                  <DrawerClose asChild>
+                    <Link
+                      href="/subjects"
+                      className="text-lg font-medium hover:text-navy-600 transition-colors"
+                    >
+                      Subjects
+                    </Link>
+                  </DrawerClose>
+                  <DrawerClose asChild>
+                    <Link
+                      href="/teachers"
+                      className="text-lg font-medium hover:text-navy-600 transition-colors"
+                    >
+                      Teachers
+                    </Link>
+                  </DrawerClose>
+                  <DrawerClose asChild>
+                    <Link
+                      href="/blog"
+                      className="text-lg font-medium hover:text-navy-600 transition-colors"
+                    >
+                      Blog
+                    </Link>
+                  </DrawerClose>
+                  <DrawerClose asChild>
+                    <Link
+                      href="/about-us"
+                      className="text-lg font-medium hover:text-navy-600 transition-colors"
+                    >
+                      About Us
+                    </Link>
+                  </DrawerClose>
+                  <DrawerClose asChild>
+                    <Link
+                      href="/contact-us"
+                      className="text-lg font-medium hover:text-navy-600 transition-colors"
+                    >
+                      Contact Us
+                    </Link>
+                  </DrawerClose>
+                  <DrawerClose asChild>
+                    <Link
+                      href="/packages"
+                      className="text-lg font-medium hover:text-navy-600 transition-colors"
+                    >
+                      Packages
+                    </Link>
+                  </DrawerClose>
                   <div className="pt-4 flex flex-col space-y-2">
-                    <Button 
-                      className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900"
-                    >
-                      Log in
-                    </Button>
-                    <Button 
-                      variant="outline"
-                      className="border-navy-600 text-navy-600 hover:bg-navy-50"
-                    >
-                      Sign Up
-                    </Button>
+                    <DrawerClose asChild>
+                      <Link href="/login">
+                        <Button className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900 w-full">
+                          Log in
+                        </Button>
+                      </Link>
+                    </DrawerClose>
+                    <DrawerClose asChild>
+                      <Link href="/signup">
+                        <Button
+                          variant="outline"
+                          className="border-navy-600 text-navy-600 hover:bg-navy-50 w-full"
+                        >
+                          Sign Up
+                        </Button>
+                      </Link>
+                    </DrawerClose>
                   </div>
                 </div>
               </DrawerContent>
