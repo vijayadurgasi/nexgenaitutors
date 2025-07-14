@@ -1,12 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { notFound } from "next/navigation";
-import { blogPosts } from "@/lib/blog-data";
+import { blogContent } from "@/lib/blog-content";
+import { Button } from "@/components/ui/button";
+
+type BlogPost = {
+  title: string;
+  category: string;
+  date: string;
+  image: string;
+  slug: string;
+  content: string;
+};
+
+type BlogContent = {
+  [key: string]: BlogPost;
+};
+
+const blogContentTyped = blogContent as BlogContent;
 
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({
-    slugs: post.slug,
+  return Object.keys(blogContentTyped).map((slug) => ({
+    slugs: slug,
   }));
 }
 
@@ -20,21 +35,19 @@ interface Params {
 export default async function BlogPostPage({ params }: Params) {
   // Await the params since they're now promises in Next.js 15+
   const resolvedParams = await params;
-  // Await searchParams even if not used in this component
-  // await searchParams;
   const slug = resolvedParams.slugs as string;
-  
-  const post = blogPosts.find((post) => post.slug === slug);
+
+  const post = blogContentTyped[slug];
 
   if (!post) {
     return notFound();
   }
 
-  // Generate a longer content based on the excerpt
-  const content = generateExpandedContent(post.excerpt, post.title, post.category);
+  // Generate a longer content based on the content field
+  const content = post.content.split("\n\n");
 
   // Get related posts (excluding current post)
-  const relatedPosts = blogPosts
+  const relatedPosts = Object.values(blogContentTyped)
     .filter((p) => p.slug !== slug)
     .filter((p) => p.category === post.category || Math.random() > 0.5) // Same category or random
     .slice(0, 3);
@@ -70,8 +83,11 @@ export default async function BlogPostPage({ params }: Params) {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <div className="prose prose-lg dark:prose-invert">
-                {content.map((paragraph, index) => (
-                  <p key={index} className="mb-6 text-gray-700 dark:text-gray-300">
+                {content.map((paragraph: string, index: number) => (
+                  <p
+                    key={index}
+                    className="mb-6 text-gray-700 dark:text-gray-300"
+                  >
                     {paragraph}
                   </p>
                 ))}
@@ -103,7 +119,8 @@ export default async function BlogPostPage({ params }: Params) {
                   <div>
                     <h3 className="font-semibold">John Doe</h3>
                     <p className="text-gray-600 dark:text-gray-400 text-sm">
-                      Educational Consultant & Content Writer at NextGen AI Tutors
+                      Educational Consultant & Content Writer at NextGen AI
+                      Tutors
                     </p>
                   </div>
                 </div>
@@ -121,7 +138,11 @@ export default async function BlogPostPage({ params }: Params) {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {relatedPosts.map((relatedPost, index) => (
-                <Link key={index} href={`/blog/${relatedPost.slug}`} className="block group">
+                <Link
+                  key={index}
+                  href={`/blog/${relatedPost.slug}`}
+                  className="block group"
+                >
                   <div className="bg-white dark:bg-navy-800/30 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all">
                     <div className="relative h-48">
                       <Image
@@ -139,7 +160,7 @@ export default async function BlogPostPage({ params }: Params) {
                         {relatedPost.title}
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400 line-clamp-2">
-                        {relatedPost.excerpt}
+                        {relatedPost.content.split("\n\n")[0]}
                       </p>
                     </div>
                   </div>
@@ -161,23 +182,4 @@ export default async function BlogPostPage({ params }: Params) {
       </main>
     </div>
   );
-}
-
-function generateExpandedContent(excerpt: string, title: string, category: string): string[] {
-  // Create an expanded article from the excerpt
-  const introduction = `${excerpt} This article explores how parents and educators can work together to support children's development in this crucial area.`;
-  
-  const paragraphs = [
-    introduction,
-    `When it comes to ${title.toLowerCase()}, research has shown that early intervention and consistent support make a significant difference. Educational experts recommend starting with simple, age-appropriate activities that gradually increase in complexity as children develop their skills and confidence.`,
-    `One of the key factors in ${category.toLowerCase()} education is creating an environment that encourages curiosity and exploration. Children naturally want to understand the world around them, and by providing them with the right tools and guidance, we can help them develop a lifelong love of learning.`,
-    `At NextGen AI Tutors, we've observed that personalized learning approaches yield the best results. Every child has unique strengths, challenges, and learning preferences. By tailoring educational experiences to individual needs, we can help each student reach their full potential.`,
-    `Communication between parents and educators is also essential. When adults in a child's life are aligned in their educational approach, it creates consistency that helps reinforce learning objectives. Regular check-ins and updates about progress can help ensure everyone is working toward the same goals.`,
-    `Technology can be a powerful tool in modern education when used appropriately. Interactive applications, educational games, and AI-powered learning platforms can supplement traditional teaching methods and provide additional ways for children to engage with material.`,
-    `Practice and repetition remain fundamental to mastering new skills, but they don't have to be boring. Finding creative ways to incorporate learning into everyday activities helps reinforce concepts while keeping children engaged and motivated.`,
-    `Finally, celebrating progress, no matter how small, encourages children to persist through challenges. Acknowledging effort as well as achievement helps develop a growth mindset that will benefit them throughout their educational journey and beyond.`,
-    `We hope this article has provided valuable insights into ${title.toLowerCase()}. For more personalized guidance, consider exploring the tutoring options available through NextGen AI Tutors, where we combine cutting-edge technology with proven educational methods to help every student succeed.`
-  ];
-  
-  return paragraphs;
 }

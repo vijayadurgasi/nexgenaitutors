@@ -24,12 +24,16 @@ const CtaSection = () => {
           Start today and see the difference in your academic performance.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <Link href={"/contact-us"}>
           <Button size="lg" variant="secondary" className="text-lg px-8">
             Get Started Now
           </Button>
+          </Link>
+          <Link href="/about-us">
           <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent border-white text-white hover:bg-white/10">
             Learn More
           </Button>
+          </Link>
         </div>
       </div>
     </section>

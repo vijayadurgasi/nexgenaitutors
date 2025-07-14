@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const LARGE_SCREEN_BREAKPOINT = 1024
+const LARGE_SCREEN_BREAKPOINT = 1119
 
 export function useIsLarge() {
   const [isLarge, setIsLarge] = React.useState<boolean | undefined>(undefined)
