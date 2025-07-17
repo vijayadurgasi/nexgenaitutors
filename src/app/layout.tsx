@@ -10,6 +10,14 @@ import Footer from "@/components/Footer";
 import { Metadata, Viewport } from "next";
 import { ThemeProvider } from "@/providers/theme-provider";
 
+import { Outfit } from "next/font/google";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-outfit",
+});
+
 export const viewport: Viewport = {
   themeColor: "#1a365d",
 };
@@ -54,7 +62,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className="font-outfit">
         <QueryProvider>
           <ServiceWorkerRegistration />
           <ThemeProvider
@@ -67,6 +75,7 @@ export default function RootLayout({
               <Toaster />
               <Sonner />
               <Header />
+              {/* <Tagline/> */}
               {children}
               <Footer />
             </TooltipProvider>

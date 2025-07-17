@@ -46,7 +46,7 @@ const AboutUs = () => {
               Who We Are
             </h2>
             <p className="text-lg text-muted-foreground mb-6">
-              NextGen AI Tutor is more than an edtech platform, we are parents,
+              NextGenAI Tutor is more than an edtech platform, we are parents,
               educators, and technologists that believe that every child is
               entitled to quality education that is clear, patient, and tailored
               to their learning needs. Founded by Vijaya Durgasi who completed a
