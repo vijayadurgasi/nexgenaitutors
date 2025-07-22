@@ -63,7 +63,7 @@ export default function SubjectsPage() {
             className="border-navy-600 text-navy-600 hover:bg-navy-600 hover:text-white dark:border-navy-400 dark:text-navy-400 dark:hover:bg-navy-500 dark:hover:text-white"
             onClick={loadMore}
           >
-            Load More Articles
+            Load More Subjects
           </Button>
         </div>
       )}
