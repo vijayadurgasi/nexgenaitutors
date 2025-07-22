@@ -97,6 +97,7 @@
 html, body {
   max-width: 100%;
   overflow-x: hidden;
+  font-family: 'Outfit', sans-serif;
 }
 
 /* Prevent large elements from causing overflow */
