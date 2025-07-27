@@ -21,7 +21,7 @@ export const subjects: Subject[] = [
 
   {
     id: 1,
-    title: "Mathematics",
+    title:"Mathematics",
     slug: "mathematics",
     description:
       "Master key mathematical concepts with personalized AI tutoring.",
