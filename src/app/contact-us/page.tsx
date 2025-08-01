@@ -122,11 +122,7 @@ const ContactUs = () => {
                       Our Location
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300">
-                      123 Education Avenue
-                      <br />
-                      Suite 456
-                      <br />
-                      San Francisco, CA 94107
+                      Sydney, NSW, Australia
                     </p>
                   </div>
                 </div>
