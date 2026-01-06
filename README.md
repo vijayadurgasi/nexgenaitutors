@@ -1,69 +1,73 @@
-# Welcome to your Lovable project
+# NextGenAI Tutors
 
-## Project info
+Personalized learning experiences powered by advanced artificial intelligence.
 
-**URL**: https://lovable.dev/projects/54b550d5-20c9-4998-9a2a-5966b1e6a31b
+## Project Info
 
-## How can I edit this code?
+**Website**: https://nextgenaitutors.com
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+- **Framework**: Next.js (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **State Management**: React Query
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/54b550d5-20c9-4998-9a2a-5966b1e6a31b) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js 18+ and npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+### Installation
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to the project directory
+cd nexgenaitutors
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at `http://localhost:3000`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Available Scripts
 
-**Use GitHub Codespaces**
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Project Structure
 
-## What technologies are used for this project?
+```
+src/
+├── app/              # Next.js App Router pages
+├── components/       # Reusable UI components
+├── hooks/            # Custom React hooks
+├── lib/              # Utility functions and data
+├── providers/        # Context providers
+└── utils/            # Helper utilities
+```
 
-This project is built with .
+## Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Build the static export:
 
-## How can I deploy this project?
+```sh
+npm run build
+```
 
-Simply open [Lovable](https://lovable.dev/projects/54b550d5-20c9-4998-9a2a-5966b1e6a31b) and click on Share -> Publish.
+The static files will be generated in the `out/` directory, ready for deployment to any static hosting provider (Azure Static Web Apps, Netlify, Vercel, etc.).
 
-## I want to use a custom domain - is that possible?
+## Contact
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+- **Email**: vijaya@nextgenaitutors.com
+- **Phone**: +61 (468) 957-179
