@@ -148,19 +148,6 @@ const Header = () => {
             {!isLarge ? (
               <>
                 <ModeToggle />
-                <Link href="/login">
-                  <Button
-                    variant="ghost"
-                    className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900"
-                  >
-                    Log in
-                  </Button>
-                </Link>
-                <Link href="/signup">
-                  <Button className="bg-white text-navy-600 border border-navy-600 hover:bg-navy-50">
-                    Sign Up
-                  </Button>
-                </Link>
               </>
             ) : (
               <Drawer>
@@ -240,25 +227,6 @@ const Header = () => {
                         Packages
                       </Link>
                     </DrawerClose>
-                    <div className="pt-4 flex flex-col space-y-2">
-                      <DrawerClose asChild>
-                        <Link href="/login">
-                          <Button className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900 w-full">
-                            Log in
-                          </Button>
-                        </Link>
-                      </DrawerClose>
-                      <DrawerClose asChild>
-                        <Link href="/signup">
-                          <Button
-                            variant="outline"
-                            className="border-navy-600 text-navy-600 hover:bg-navy-50 w-full"
-                          >
-                            Sign Up
-                          </Button>
-                        </Link>
-                      </DrawerClose>
-                    </div>
                   </div>
                 </DrawerContent>
               </Drawer>
@@ -271,19 +239,6 @@ const Header = () => {
             {!isLarge ? (
               <>
                 <ModeToggle />
-                <Link href="/login">
-                  <Button
-                    variant="ghost"
-                    className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900"
-                  >
-                    Log in
-                  </Button>
-                </Link>
-                <Link href="/signup">
-                  <Button className="bg-white text-navy-600 border border-navy-600 hover:bg-navy-50">
-                    Sign Up
-                  </Button>
-                </Link>
               </>
             ) : (
               <Drawer>
@@ -382,25 +337,6 @@ const Header = () => {
                         Packages
                       </Link>
                     </DrawerClose>
-                    <div className="pt-4 flex flex-col space-y-2">
-                      <DrawerClose asChild>
-                        <Link href="/login">
-                          <Button className="bg-gradient-to-r from-navy-600 to-navy-800 text-white hover:from-navy-700 hover:to-navy-900 w-full">
-                            Log in
-                          </Button>
-                        </Link>
-                      </DrawerClose>
-                      <DrawerClose asChild>
-                        <Link href="/signup">
-                          <Button
-                            variant="outline"
-                            className="border-navy-600 text-navy-600 hover:bg-navy-50 w-full"
-                          >
-                            Sign Up
-                          </Button>
-                        </Link>
-                      </DrawerClose>
-                    </div>
                   </div>
                 </DrawerContent>
               </Drawer>
