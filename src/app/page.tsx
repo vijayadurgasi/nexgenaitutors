@@ -1,5 +1,4 @@
 
-import ChatbotButton from "@/components/Chat/ChatbotButton";
 import ChooseYourLearningStyle from "@/components/home/ChooseYourLearningStyle";
 import CtaSection from "@/components/home/CtaSection";
 import FeaturesSection from "@/components/home/FeaturesSection";
@@ -21,7 +20,6 @@ const Page = () => {
         <WhyParentsTrustUs />
         <CtaSection />
       </main>
-      <ChatbotButton />
     </div>
   );
 };
