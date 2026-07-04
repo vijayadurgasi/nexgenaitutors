@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import CountUp from "@/components/ui/count-up";
 import heroBlob from "@/assets/hero-blob.svg";
 import heroSideImage from "@/assets/hero-side-image.jpeg";
+import VidhyaWidget from "@/components/home/VidhyaWidget";
 
 const HeroSection = () => {
   return (
@@ -57,6 +58,8 @@ const HeroSection = () => {
                 </Button>
               </Link>
             </div>
+
+            <VidhyaWidget />
           </div>
         </div>
         {/* Image with blob mask */}
