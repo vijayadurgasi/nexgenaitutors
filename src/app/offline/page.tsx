@@ -9,10 +9,10 @@ export default function OfflinePage() {
     <div className="min-h-screen flex flex-col items-center justify-center p-4">
       <div className="max-w-md text-center">
         <div className="mb-8 relative w-24 h-24 mx-auto">
-          <Image 
-            src="/placeholder.svg" 
-            alt="Offline" 
-            fill 
+          <Image
+            src="/logo.png"
+            alt="NextGenAI Tutors"
+            fill
             className="object-contain"
           />
         </div>

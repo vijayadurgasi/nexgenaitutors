@@ -40,14 +40,14 @@ export const metadata: Metadata = {
     title: "NextGen AI Tutors",
     description:
       "Personalized learning experiences powered by advanced artificial intelligence",
-    images: [{ url: "https://nextgenaitutors.com/og-image.png" }],
+    images: [{ url: "https://nextgenaitutors.com/logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "NextGen AI Tutors",
     description:
       "Personalized learning experiences powered by advanced artificial intelligence",
-    images: ["https://nextgenaitutors.com/og-image.png"],
+    images: ["https://nextgenaitutors.com/logo.png"],
   },
   other: {
     "msapplication-config": "/browserconfig.xml",

@@ -1,6 +1,6 @@
 
 // Service Worker for NextGen AI Tutors (Next.js version)
-const CACHE_NAME = 'nextgen-ai-tutors-v1';
+const CACHE_NAME = 'nextgen-ai-tutors-v2';
 
 // Assets to cache on install
 const staticAssets = [
@@ -9,8 +9,7 @@ const staticAssets = [
   '/favicon.ico',
   '/manifest.json',
   '/robots.txt',
-  '/placeholder.svg',
-  '/og-image.png'
+  '/logo.png'
 ];
 
 // Install event - cache static assets
