@@ -4,4 +4,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://nextgenaitutors.com/sitemap.xml
+Sitemap: https://nextgenaitutors.com.au/sitemap.xml

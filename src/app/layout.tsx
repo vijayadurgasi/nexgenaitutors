@@ -36,18 +36,18 @@ export const metadata: Metadata = {
   applicationName: "NextGen AI Tutors",
   openGraph: {
     type: "website",
-    url: "https://nextgenaitutors.com/",
+    url: "https://nextgenaitutors.com.au/",
     title: "NextGen AI Tutors",
     description:
       "Personalized learning experiences powered by advanced artificial intelligence",
-    images: [{ url: "https://nextgenaitutors.com/logo.png" }],
+    images: [{ url: "https://nextgenaitutors.com.au/logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "NextGen AI Tutors",
     description:
       "Personalized learning experiences powered by advanced artificial intelligence",
-    images: ["https://nextgenaitutors.com/logo.png"],
+    images: ["https://nextgenaitutors.com.au/logo.png"],
   },
   other: {
     "msapplication-config": "/browserconfig.xml",
